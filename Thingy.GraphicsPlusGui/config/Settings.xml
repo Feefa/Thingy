@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <components>
+    
+    <component id="MainForm">
+      <parameters>
+        <partDirectory>e:\dev\projects\Thingy\str</partDirectory>
+      </parameters>
+    </component>
+  
+    <component id="GraphicsPlus">
+      <parameters>
+        <Scale>2.0</Scale>
+      </parameters>
+    </component>
+
+  </components>
+</configuration>
+

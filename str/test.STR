@@ -1,0 +1,2877 @@
+Joint
+0,0
+180
+0
+
+Element dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1
+0,259.1232
+180
+0
+
+Element b1.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b2
+0,28.416
+180
+0
+
+Element b1.b2.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3
+0,29.952
+180
+0
+
+Element b1.b3.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4
+0,41.472
+180
+0
+
+Element b1.b3.b4.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5
+0,40.22144
+180
+0.027704
+
+Element b1.b3.b4.b5.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6
+0,36.80614
+180
+-0.070282
+
+Element b1.b3.b4.b5.b6.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7
+0,19.2
+180
+0
+
+Element b1.b3.b4.b5.b6.b7.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b2.b8
+-16.896,-28.416
+177.947320900698
+0
+
+Element b1.b2.b8.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b2.b8.b9
+0,123.904
+180
+0
+
+Element b1.b2.b8.b9.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b2.b8.b9.b10
+0,107.264
+177.940388257248
+0
+
+Element b1.b2.b8.b9.b10.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b2.b8.b9.b10.b11
+-0.559872,-28.19533
+180
+0.11565
+
+Element b1.b2.b8.b9.b10.b11.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b2.b12
+16.896,-28.416
+182.103442996766
+0
+
+Element b1.b2.b12.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b2.b12.b13
+0,123.904
+180
+0
+
+Element b1.b2.b12.b13.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b2.b12.b13.b14
+0,107.264
+182.102812911684
+0
+
+Element b1.b2.b12.b13.b14.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b2.b12.b13.b14.b15
+0.658944,-28.19482
+180
+0.115431
+
+Element b1.b2.b12.b13.b14.b15.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b16
+-5.12,16.83814
+270.000000737879
+-0.036282
+
+Element b1.b3.b4.b5.b16.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b16.b17
+0,35.84
+224.882773807826
+0
+
+Element b1.b3.b4.b5.b16.b17.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b16.b17.b18
+0,47.872
+180
+0
+
+Element b1.b3.b4.b5.b16.b17.b18.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b16.b17.b19
+0,82.176
+180
+0
+
+Element b1.b3.b4.b5.b16.b17.b19.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b16.b17.b19.b20
+0,36.096
+180
+0
+
+Element b1.b3.b4.b5.b16.b17.b19.b20.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b16.b17.b19.b21
+0,73.472
+180.123988089612
+0
+
+Element b1.b3.b4.b5.b16.b17.b19.b21.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b16.b17.b19.b21.b22
+-2.048,5.12
+151.783427404159
+0.026
+
+Element b1.b3.b4.b5.b16.b17.b19.b21.b22.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b16.b17.b19.b21.b22.b23
+0,7.936
+180
+0
+
+Element b1.b3.b4.b5.b16.b17.b19.b21.b22.b23.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b16.b17.b19.b21.b22.b23.b24
+0,9.984
+180
+0
+
+Element b1.b3.b4.b5.b16.b17.b19.b21.b22.b23.b24.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b16.b17.b19.b21.b25
+0.256,17.92
+180
+0.038
+
+Element b1.b3.b4.b5.b16.b17.b19.b21.b25.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b16.b17.b19.b21.b25.b26
+0,11.264
+180
+0
+
+Element b1.b3.b4.b5.b16.b17.b19.b21.b25.b26.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b16.b17.b19.b21.b25.b26.b27
+0,6.4
+180
+0
+
+Element b1.b3.b4.b5.b16.b17.b19.b21.b25.b26.b27.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b16.b17.b19.b21.b28
+0.512,18.688
+180
+0.015
+
+Element b1.b3.b4.b5.b16.b17.b19.b21.b28.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b16.b17.b19.b21.b28.b29
+0,11.776
+180
+0
+
+Element b1.b3.b4.b5.b16.b17.b19.b21.b28.b29.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b16.b17.b19.b21.b28.b29.b30
+0,7.424
+180
+0
+
+Element b1.b3.b4.b5.b16.b17.b19.b21.b28.b29.b30.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b16.b17.b19.b21.b31
+0.512,18.688
+180
+-0.008
+
+Element b1.b3.b4.b5.b16.b17.b19.b21.b31.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b16.b17.b19.b21.b31.b32
+0,11.264
+180
+0
+
+Element b1.b3.b4.b5.b16.b17.b19.b21.b31.b32.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b16.b17.b19.b21.b31.b32.b33
+0,6.912
+180
+0
+
+Element b1.b3.b4.b5.b16.b17.b19.b21.b31.b32.b33.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b16.b17.b19.b21.b34
+0.512,17.152
+180
+-0.029
+
+Element b1.b3.b4.b5.b16.b17.b19.b21.b34.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b16.b17.b19.b21.b34.b35
+0,10.24
+180
+0
+
+Element b1.b3.b4.b5.b16.b17.b19.b21.b34.b35.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b16.b17.b19.b21.b34.b35.b36
+0,5.632
+180
+0
+
+Element b1.b3.b4.b5.b16.b17.b19.b21.b34.b35.b36.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b37
+5.12,16.83814
+89.9999992621209
+-0.036282
+
+Element b1.b3.b4.b5.b37.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b37.b38
+0,35.84
+135.101356244335
+0
+
+Element b1.b3.b4.b5.b37.b38.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b37.b38.b39
+0,47.616
+180
+0
+
+Element b1.b3.b4.b5.b37.b38.b39.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b37.b38.b40
+0,82.176
+179.916577326112
+0
+
+Element b1.b3.b4.b5.b37.b38.b40.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b37.b38.b40.b41
+0,36.096
+180
+0
+
+Element b1.b3.b4.b5.b37.b38.b40.b41.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b37.b38.b40.b42
+0,73.472
+179.918468088286
+0
+
+Element b1.b3.b4.b5.b37.b38.b40.b42.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b37.b38.b40.b42.b43
+1.792,4.864
+208.21708827523
+0.026
+
+Element b1.b3.b4.b5.b37.b38.b40.b42.b43.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b37.b38.b40.b42.b43.b44
+0,7.936
+180
+0
+
+Element b1.b3.b4.b5.b37.b38.b40.b42.b43.b44.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b37.b38.b40.b42.b43.b44.b45
+0,9.984
+180
+0
+
+Element b1.b3.b4.b5.b37.b38.b40.b42.b43.b44.b45.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b37.b38.b40.b42.b46
+-0.256,17.92
+180
+0.038
+
+Element b1.b3.b4.b5.b37.b38.b40.b42.b46.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b37.b38.b40.b42.b46.b47
+0,11.264
+180
+0
+
+Element b1.b3.b4.b5.b37.b38.b40.b42.b46.b47.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b37.b38.b40.b42.b46.b47.b48
+0,6.4
+180
+0
+
+Element b1.b3.b4.b5.b37.b38.b40.b42.b46.b47.b48.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b37.b38.b40.b42.b49
+-0.512,18.688
+180
+0.015
+
+Element b1.b3.b4.b5.b37.b38.b40.b42.b49.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b37.b38.b40.b42.b49.b50
+0,11.776
+180
+0
+
+Element b1.b3.b4.b5.b37.b38.b40.b42.b49.b50.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b37.b38.b40.b42.b49.b50.b51
+0,7.424
+180
+0
+
+Element b1.b3.b4.b5.b37.b38.b40.b42.b49.b50.b51.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b37.b38.b40.b42.b52
+-0.512,18.688
+180
+-0.008
+
+Element b1.b3.b4.b5.b37.b38.b40.b42.b52.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b37.b38.b40.b42.b52.b53
+0,11.264
+180
+0
+
+Element b1.b3.b4.b5.b37.b38.b40.b42.b52.b53.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b37.b38.b40.b42.b52.b53.b54
+0,6.912
+180
+0
+
+Element b1.b3.b4.b5.b37.b38.b40.b42.b52.b53.b54.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b37.b38.b40.b42.b55
+-0.512,17.152
+180
+-0.029
+
+Element b1.b3.b4.b5.b37.b38.b40.b42.b55.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b37.b38.b40.b42.b55.b56
+0,10.24
+180
+0
+
+Element b1.b3.b4.b5.b37.b38.b40.b42.b55.b56.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b37.b38.b40.b42.b55.b56.b57
+0,5.632
+180
+0
+
+Element b1.b3.b4.b5.b37.b38.b40.b42.b55.b56.b57.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b2.b8.b58
+0,0
+180
+0
+
+Element b1.b2.b8.b58.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b2.b8.b59
+0,102.4
+180
+0
+
+Element b1.b2.b8.b59.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b2.b8.b9.b60
+0,76.8
+180
+0
+
+Element b1.b2.b8.b9.b60.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b16.b17.b61
+0,0
+180
+0
+
+Element b1.b3.b4.b5.b16.b17.b61.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b2.b12.b62
+0,0
+180
+0
+
+Element b1.b2.b12.b62.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b2.b12.b63
+0,102.4
+180
+0
+
+Element b1.b2.b12.b63.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b2.b12.b13.b64
+0,76.8
+180
+0
+
+Element b1.b2.b12.b13.b64.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b37.b38.b65
+0,0
+180
+0
+
+Element b1.b3.b4.b5.b37.b38.b65.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b66
+-18.944,28.23731
+180
+0.111817
+
+Element b1.b3.b4.b66.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b67
+18.944,28.13722
+180
+0.112737
+
+Element b1.b3.b4.b67.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b2.b68
+0,-28.416
+180.02721550139
+0
+
+Element b1.b2.b68.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b2.b68.b69
+0,-102.4
+180
+0
+
+Element b1.b2.b68.b69.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b2.b68.b69.b70
+0,-21.504
+179.994385012623
+0
+
+Element b1.b2.b68.b69.b70.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b2.b68.b69.b70.b71
+0,-76.8
+180
+0
+
+Element b1.b2.b68.b69.b70.b71.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72
+0,4.352
+180
+-0.003
+
+Element b1.b3.b4.b5.b6.b7.b72.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b73
+0,19.2
+180
+0.027
+
+Element b1.b3.b4.b5.b6.b7.b72.b73.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b74
+0,12.8
+180
+0.051
+
+Element b1.b3.b4.b5.b6.b7.b72.b74.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b74.b75
+-8.192,0
+180
+0.025
+
+Element b1.b3.b4.b5.b6.b7.b72.b74.b75.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b74.b75.b76
+-0.918272,0.167936
+180
+0.001475
+
+Element b1.b3.b4.b5.b6.b7.b72.b74.b75.b76.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b74.b75.b76.b77
+0,0
+180
+0
+
+Element b1.b3.b4.b5.b6.b7.b72.b74.b75.b76.b77.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b74.b75.b76.b78
+-0.105728,0.088064
+180
+-0.000475
+
+Element b1.b3.b4.b5.b6.b7.b72.b74.b75.b76.b78.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b74.b75.b76.b79
+-0.105728,0.088064
+180
+-0.000475
+
+Element b1.b3.b4.b5.b6.b7.b72.b74.b75.b76.b79.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b74.b75.b80
+5.376256,4.356096
+180
+0.030707
+
+Element b1.b3.b4.b5.b6.b7.b72.b74.b75.b80.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b74.b75.b81
+-0.413184,6.070272
+180
+0.025708
+
+Element b1.b3.b4.b5.b6.b7.b72.b74.b75.b81.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b74.b75.b82
+-5.789184,4.743168
+180
+0.012788
+
+Element b1.b3.b4.b5.b6.b7.b72.b74.b75.b82.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b83
+-10.50419,6.048
+180
+0.098485
+
+Element b1.b3.b4.b5.b6.b7.b72.b83.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b74.b84
+8.192,0
+180
+0.025
+
+Element b1.b3.b4.b5.b6.b7.b72.b74.b84.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b74.b84.b85
+1.024,0.167936
+180
+0.001475
+
+Element b1.b3.b4.b5.b6.b7.b72.b74.b84.b85.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b74.b84.b85.b86
+0,0
+180
+0
+
+Element b1.b3.b4.b5.b6.b7.b72.b74.b84.b85.b86.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b74.b84.b85.b87
+0,0.088064
+180
+-0.000475
+
+Element b1.b3.b4.b5.b6.b7.b72.b74.b84.b85.b87.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b74.b84.b85.b88
+0,0.088064
+180
+-0.000475
+
+Element b1.b3.b4.b5.b6.b7.b72.b74.b84.b85.b88.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b74.b84.b89
+-5.375488,4.356096
+180
+0.030707
+
+Element b1.b3.b4.b5.b6.b7.b72.b74.b84.b89.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b74.b84.b90
+0.413696,6.070272
+180
+0.025708
+
+Element b1.b3.b4.b5.b6.b7.b72.b74.b84.b90.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b74.b84.b91
+5.789952,4.743168
+180
+0.012788
+
+Element b1.b3.b4.b5.b6.b7.b72.b74.b84.b91.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b92
+10.50496,6.048
+180
+0.098485
+
+Element b1.b3.b4.b5.b6.b7.b72.b92.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b93
+-19.65952,8.971008
+180
+0
+
+Element b1.b3.b4.b5.b6.b7.b72.b93.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b94
+19.65952,8.971008
+180
+0
+
+Element b1.b3.b4.b5.b6.b7.b72.b94.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b95
+-9.859584,-0.179968
+180
+0.098035
+
+Element b1.b3.b4.b5.b6.b7.b72.b95.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b96
+9.860352,-0.179968
+180
+0.098035
+
+Element b1.b3.b4.b5.b6.b7.b72.b96.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b97
+-0.256,6.656
+180
+0.07
+
+Element b1.b3.b4.b5.b6.b7.b72.b97.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b97.b98
+0,1.536
+180
+0.033
+
+Element b1.b3.b4.b5.b6.b7.b72.b97.b98.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b97.b99
+0,-3.584
+180
+0.036
+
+Element b1.b3.b4.b5.b6.b7.b72.b97.b99.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b97.b100
+-3.328,-2.988032
+180
+0.036613
+
+Element b1.b3.b4.b5.b6.b7.b72.b97.b100.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b97.b101
+3.3664,-2.988032
+180
+0.036614
+
+Element b1.b3.b4.b5.b6.b7.b72.b97.b101.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b102
+0,-4.864
+180
+0.05
+
+Element b1.b3.b4.b5.b6.b7.b72.b102.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b102.b103
+0,0.074752
+180
+0.065807
+
+Element b1.b3.b4.b5.b6.b7.b72.b102.b103.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b102.b104
+-3.659008,-0.0128
+180
+0.056497
+
+Element b1.b3.b4.b5.b6.b7.b72.b102.b104.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b102.b105
+3.659008,-0.0128
+180
+0.056497
+
+Element b1.b3.b4.b5.b6.b7.b72.b102.b105.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b102.b106
+0,2.401536
+180
+0.036813
+
+Element b1.b3.b4.b5.b6.b7.b72.b102.b106.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b102.b107
+0,10.57792
+180
+-0.025461
+
+Element b1.b3.b4.b5.b6.b7.b72.b102.b107.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b102.b107.b108
+0,-11.52
+180
+0.011
+
+Element b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b109
+0,0.512
+180
+0.081
+
+Element b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b109.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b110
+-2.812672,1.095936
+180
+0.073659
+
+Element b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b110.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b111
+2.812672,1.095936
+180
+0.073659
+
+Element b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b111.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b112
+0,-0.71552
+180
+0.053339
+
+Element b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b112.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b113
+0,3.199744
+180
+-0.010079
+
+Element b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b113.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b114
+0,2.303744
+180
+0.033999
+
+Element b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b114.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b114.b115
+0,0.256
+180
+0.016
+
+Element b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b114.b115.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b102.b116
+-7.052288,-0.745984
+180
+0.045174
+
+Element b1.b3.b4.b5.b6.b7.b72.b102.b116.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b102.b117
+7.052288,-0.745984
+180
+0.045174
+
+Element b1.b3.b4.b5.b6.b7.b72.b102.b117.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b118
+0,-6.912
+180
+0.064
+
+Element b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b118.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b119
+0,4.864
+180
+0.085
+
+Element b1.b3.b119.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b72.b120
+0,13.66989
+180
+0.116007
+
+Element b1.b3.b4.b5.b6.b7.b72.b120.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b1.b3.b4.b5.b6.b7.b121
+0,54.54336
+180
+0.00326
+
+Element b1.b3.b4.b5.b6.b7.b121.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122
+0,0
+180
+0
+
+Element b122.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b123
+0,0
+89.9999992621209
+0
+
+Element b122.b123.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b124
+0,0
+270.000000737879
+0
+
+Element b122.b124.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b125
+-0.021504,0.586496
+180
+9.8E-05
+
+Element b122.b125.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b126
+0.020992,0.587008
+180
+0.0001
+
+Element b122.b126.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b127
+0,0
+180
+0
+
+Element b122.b127.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b127.b128
+0,259.1232
+180
+0
+
+Element b122.b127.b128.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b127.b129
+25.856,27.71789
+180
+-0.009775
+
+Element b122.b127.b129.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b127.b130
+-25.20064,27.7184
+180
+-0.010025
+
+Element b122.b127.b130.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b131
+0,0
+180
+0
+
+Element b122.b131.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b131.b132
+0,0
+180
+0
+
+Element b122.b131.b132.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b131.b133
+0,0
+180
+0
+
+Element b122.b131.b133.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b131.b134
+0,0
+180
+0
+
+Element b122.b131.b134.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b131.b135
+0,0
+180
+0
+
+Element b122.b131.b135.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b131.b136
+0,0
+180
+0
+
+Element b122.b131.b136.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b131.b137
+0,0
+180
+0
+
+Element b122.b131.b137.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b131.b138
+0,0
+180
+0
+
+Element b122.b131.b138.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b131.b139
+0,0
+180
+0
+
+Element b122.b131.b139.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b131.b140
+0,0
+180
+0
+
+Element b122.b131.b140.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b141
+0,0
+180
+0
+
+Element b122.b141.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b141.b142
+0,0
+180
+0
+
+Element b122.b141.b142.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b141.b143
+0,0
+180
+0
+
+Element b122.b141.b143.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b141.b144
+0,0
+180
+0
+
+Element b122.b141.b144.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b141.b145
+0,0
+180
+0
+
+Element b122.b141.b145.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b141.b146
+0,0
+180
+0
+
+Element b122.b141.b146.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b141.b147
+0,0
+180
+0
+
+Element b122.b141.b147.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b141.b148
+0,0
+180
+0
+
+Element b122.b141.b148.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b141.b149
+0,0
+180
+0
+
+Element b122.b141.b149.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b141.b150
+0,0
+180
+0
+
+Element b122.b141.b150.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b151
+0,0
+180
+0
+
+Element b122.b151.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b151.b152
+0,0
+180
+1
+
+Element b122.b151.b152.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b151.b153
+0,0
+180
+0
+
+Element b122.b151.b153.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b154
+0,0
+180
+0
+
+Element b122.b154.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b154.b155
+0,0
+180
+1
+
+Element b122.b154.b155.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b154.b156
+0,0
+180
+0
+
+Element b122.b154.b156.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b157
+0,0
+180
+0
+
+Element b122.b157.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b157.b158
+0,0
+180
+1
+
+Element b122.b157.b158.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b157.b159
+0,0
+180
+0
+
+Element b122.b157.b159.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Joint b122.b160
+0,0
+180
+0
+
+Element b122.b160.dot
+Circle
+0,0 1,0
+Blue
+10
+
+Triangle t1
+b1.b2 0,0
+b1 1,-1
+b1 -1,1
+Black
+0
+
+Triangle t2
+b1.b3 0,0
+b1 1,-1
+b1 -1,1
+Black
+0
+
+Triangle t3
+b1.b3.b4 0,0
+b1.b3 1,-1
+b1.b3 -1,1
+Black
+0
+
+Triangle t4
+b1.b3.b4.b5 0,0
+b1.b3.b4 1,-1
+b1.b3.b4 -1,1
+Black
+0
+
+Triangle t5
+b1.b3.b4.b5.b6 0,0
+b1.b3.b4.b5 1,-1
+b1.b3.b4.b5 -1,1
+Black
+0
+
+Triangle t6
+b1.b3.b4.b5.b6.b7 0,0
+b1.b3.b4.b5.b6 1,-1
+b1.b3.b4.b5.b6 -1,1
+Black
+0
+
+Triangle t7
+b1.b2.b8 0,0
+b1.b2 1,-1
+b1.b2 -1,1
+Black
+0
+
+Triangle t8
+b1.b2.b8.b9 0,0
+b1.b2.b8 1,-1
+b1.b2.b8 -1,1
+Black
+0
+
+Triangle t9
+b1.b2.b8.b9.b10 0,0
+b1.b2.b8.b9 1,-1
+b1.b2.b8.b9 -1,1
+Black
+0
+
+Triangle t10
+b1.b2.b8.b9.b10.b11 0,0
+b1.b2.b8.b9.b10 1,-1
+b1.b2.b8.b9.b10 -1,1
+Black
+0
+
+Triangle t11
+b1.b2.b12 0,0
+b1.b2 1,-1
+b1.b2 -1,1
+Black
+0
+
+Triangle t12
+b1.b2.b12.b13 0,0
+b1.b2.b12 1,-1
+b1.b2.b12 -1,1
+Black
+0
+
+Triangle t13
+b1.b2.b12.b13.b14 0,0
+b1.b2.b12.b13 1,-1
+b1.b2.b12.b13 -1,1
+Black
+0
+
+Triangle t14
+b1.b2.b12.b13.b14.b15 0,0
+b1.b2.b12.b13.b14 1,-1
+b1.b2.b12.b13.b14 -1,1
+Black
+0
+
+Triangle t15
+b1.b3.b4.b5.b16 0,0
+b1.b3.b4.b5 1,-1
+b1.b3.b4.b5 -1,1
+Black
+0
+
+Triangle t16
+b1.b3.b4.b5.b16.b17 0,0
+b1.b3.b4.b5.b16 1,-1
+b1.b3.b4.b5.b16 -1,1
+Black
+0
+
+Triangle t17
+b1.b3.b4.b5.b16.b17.b18 0,0
+b1.b3.b4.b5.b16.b17 1,-1
+b1.b3.b4.b5.b16.b17 -1,1
+Black
+0
+
+Triangle t18
+b1.b3.b4.b5.b16.b17.b19 0,0
+b1.b3.b4.b5.b16.b17 1,-1
+b1.b3.b4.b5.b16.b17 -1,1
+Black
+0
+
+Triangle t19
+b1.b3.b4.b5.b16.b17.b19.b20 0,0
+b1.b3.b4.b5.b16.b17.b19 1,-1
+b1.b3.b4.b5.b16.b17.b19 -1,1
+Black
+0
+
+Triangle t20
+b1.b3.b4.b5.b16.b17.b19.b21 0,0
+b1.b3.b4.b5.b16.b17.b19 1,-1
+b1.b3.b4.b5.b16.b17.b19 -1,1
+Black
+0
+
+Triangle t21
+b1.b3.b4.b5.b16.b17.b19.b21.b22 0,0
+b1.b3.b4.b5.b16.b17.b19.b21 1,-1
+b1.b3.b4.b5.b16.b17.b19.b21 -1,1
+Black
+0
+
+Triangle t22
+b1.b3.b4.b5.b16.b17.b19.b21.b22.b23 0,0
+b1.b3.b4.b5.b16.b17.b19.b21.b22 1,-1
+b1.b3.b4.b5.b16.b17.b19.b21.b22 -1,1
+Black
+0
+
+Triangle t23
+b1.b3.b4.b5.b16.b17.b19.b21.b22.b23.b24 0,0
+b1.b3.b4.b5.b16.b17.b19.b21.b22.b23 1,-1
+b1.b3.b4.b5.b16.b17.b19.b21.b22.b23 -1,1
+Black
+0
+
+Triangle t24
+b1.b3.b4.b5.b16.b17.b19.b21.b25 0,0
+b1.b3.b4.b5.b16.b17.b19.b21 1,-1
+b1.b3.b4.b5.b16.b17.b19.b21 -1,1
+Black
+0
+
+Triangle t25
+b1.b3.b4.b5.b16.b17.b19.b21.b25.b26 0,0
+b1.b3.b4.b5.b16.b17.b19.b21.b25 1,-1
+b1.b3.b4.b5.b16.b17.b19.b21.b25 -1,1
+Black
+0
+
+Triangle t26
+b1.b3.b4.b5.b16.b17.b19.b21.b25.b26.b27 0,0
+b1.b3.b4.b5.b16.b17.b19.b21.b25.b26 1,-1
+b1.b3.b4.b5.b16.b17.b19.b21.b25.b26 -1,1
+Black
+0
+
+Triangle t27
+b1.b3.b4.b5.b16.b17.b19.b21.b28 0,0
+b1.b3.b4.b5.b16.b17.b19.b21 1,-1
+b1.b3.b4.b5.b16.b17.b19.b21 -1,1
+Black
+0
+
+Triangle t28
+b1.b3.b4.b5.b16.b17.b19.b21.b28.b29 0,0
+b1.b3.b4.b5.b16.b17.b19.b21.b28 1,-1
+b1.b3.b4.b5.b16.b17.b19.b21.b28 -1,1
+Black
+0
+
+Triangle t29
+b1.b3.b4.b5.b16.b17.b19.b21.b28.b29.b30 0,0
+b1.b3.b4.b5.b16.b17.b19.b21.b28.b29 1,-1
+b1.b3.b4.b5.b16.b17.b19.b21.b28.b29 -1,1
+Black
+0
+
+Triangle t30
+b1.b3.b4.b5.b16.b17.b19.b21.b31 0,0
+b1.b3.b4.b5.b16.b17.b19.b21 1,-1
+b1.b3.b4.b5.b16.b17.b19.b21 -1,1
+Black
+0
+
+Triangle t31
+b1.b3.b4.b5.b16.b17.b19.b21.b31.b32 0,0
+b1.b3.b4.b5.b16.b17.b19.b21.b31 1,-1
+b1.b3.b4.b5.b16.b17.b19.b21.b31 -1,1
+Black
+0
+
+Triangle t32
+b1.b3.b4.b5.b16.b17.b19.b21.b31.b32.b33 0,0
+b1.b3.b4.b5.b16.b17.b19.b21.b31.b32 1,-1
+b1.b3.b4.b5.b16.b17.b19.b21.b31.b32 -1,1
+Black
+0
+
+Triangle t33
+b1.b3.b4.b5.b16.b17.b19.b21.b34 0,0
+b1.b3.b4.b5.b16.b17.b19.b21 1,-1
+b1.b3.b4.b5.b16.b17.b19.b21 -1,1
+Black
+0
+
+Triangle t34
+b1.b3.b4.b5.b16.b17.b19.b21.b34.b35 0,0
+b1.b3.b4.b5.b16.b17.b19.b21.b34 1,-1
+b1.b3.b4.b5.b16.b17.b19.b21.b34 -1,1
+Black
+0
+
+Triangle t35
+b1.b3.b4.b5.b16.b17.b19.b21.b34.b35.b36 0,0
+b1.b3.b4.b5.b16.b17.b19.b21.b34.b35 1,-1
+b1.b3.b4.b5.b16.b17.b19.b21.b34.b35 -1,1
+Black
+0
+
+Triangle t36
+b1.b3.b4.b5.b37 0,0
+b1.b3.b4.b5 1,-1
+b1.b3.b4.b5 -1,1
+Black
+0
+
+Triangle t37
+b1.b3.b4.b5.b37.b38 0,0
+b1.b3.b4.b5.b37 1,-1
+b1.b3.b4.b5.b37 -1,1
+Black
+0
+
+Triangle t38
+b1.b3.b4.b5.b37.b38.b39 0,0
+b1.b3.b4.b5.b37.b38 1,-1
+b1.b3.b4.b5.b37.b38 -1,1
+Black
+0
+
+Triangle t39
+b1.b3.b4.b5.b37.b38.b40 0,0
+b1.b3.b4.b5.b37.b38 1,-1
+b1.b3.b4.b5.b37.b38 -1,1
+Black
+0
+
+Triangle t40
+b1.b3.b4.b5.b37.b38.b40.b41 0,0
+b1.b3.b4.b5.b37.b38.b40 1,-1
+b1.b3.b4.b5.b37.b38.b40 -1,1
+Black
+0
+
+Triangle t41
+b1.b3.b4.b5.b37.b38.b40.b42 0,0
+b1.b3.b4.b5.b37.b38.b40 1,-1
+b1.b3.b4.b5.b37.b38.b40 -1,1
+Black
+0
+
+Triangle t42
+b1.b3.b4.b5.b37.b38.b40.b42.b43 0,0
+b1.b3.b4.b5.b37.b38.b40.b42 1,-1
+b1.b3.b4.b5.b37.b38.b40.b42 -1,1
+Black
+0
+
+Triangle t43
+b1.b3.b4.b5.b37.b38.b40.b42.b43.b44 0,0
+b1.b3.b4.b5.b37.b38.b40.b42.b43 1,-1
+b1.b3.b4.b5.b37.b38.b40.b42.b43 -1,1
+Black
+0
+
+Triangle t44
+b1.b3.b4.b5.b37.b38.b40.b42.b43.b44.b45 0,0
+b1.b3.b4.b5.b37.b38.b40.b42.b43.b44 1,-1
+b1.b3.b4.b5.b37.b38.b40.b42.b43.b44 -1,1
+Black
+0
+
+Triangle t45
+b1.b3.b4.b5.b37.b38.b40.b42.b46 0,0
+b1.b3.b4.b5.b37.b38.b40.b42 1,-1
+b1.b3.b4.b5.b37.b38.b40.b42 -1,1
+Black
+0
+
+Triangle t46
+b1.b3.b4.b5.b37.b38.b40.b42.b46.b47 0,0
+b1.b3.b4.b5.b37.b38.b40.b42.b46 1,-1
+b1.b3.b4.b5.b37.b38.b40.b42.b46 -1,1
+Black
+0
+
+Triangle t47
+b1.b3.b4.b5.b37.b38.b40.b42.b46.b47.b48 0,0
+b1.b3.b4.b5.b37.b38.b40.b42.b46.b47 1,-1
+b1.b3.b4.b5.b37.b38.b40.b42.b46.b47 -1,1
+Black
+0
+
+Triangle t48
+b1.b3.b4.b5.b37.b38.b40.b42.b49 0,0
+b1.b3.b4.b5.b37.b38.b40.b42 1,-1
+b1.b3.b4.b5.b37.b38.b40.b42 -1,1
+Black
+0
+
+Triangle t49
+b1.b3.b4.b5.b37.b38.b40.b42.b49.b50 0,0
+b1.b3.b4.b5.b37.b38.b40.b42.b49 1,-1
+b1.b3.b4.b5.b37.b38.b40.b42.b49 -1,1
+Black
+0
+
+Triangle t50
+b1.b3.b4.b5.b37.b38.b40.b42.b49.b50.b51 0,0
+b1.b3.b4.b5.b37.b38.b40.b42.b49.b50 1,-1
+b1.b3.b4.b5.b37.b38.b40.b42.b49.b50 -1,1
+Black
+0
+
+Triangle t51
+b1.b3.b4.b5.b37.b38.b40.b42.b52 0,0
+b1.b3.b4.b5.b37.b38.b40.b42 1,-1
+b1.b3.b4.b5.b37.b38.b40.b42 -1,1
+Black
+0
+
+Triangle t52
+b1.b3.b4.b5.b37.b38.b40.b42.b52.b53 0,0
+b1.b3.b4.b5.b37.b38.b40.b42.b52 1,-1
+b1.b3.b4.b5.b37.b38.b40.b42.b52 -1,1
+Black
+0
+
+Triangle t53
+b1.b3.b4.b5.b37.b38.b40.b42.b52.b53.b54 0,0
+b1.b3.b4.b5.b37.b38.b40.b42.b52.b53 1,-1
+b1.b3.b4.b5.b37.b38.b40.b42.b52.b53 -1,1
+Black
+0
+
+Triangle t54
+b1.b3.b4.b5.b37.b38.b40.b42.b55 0,0
+b1.b3.b4.b5.b37.b38.b40.b42 1,-1
+b1.b3.b4.b5.b37.b38.b40.b42 -1,1
+Black
+0
+
+Triangle t55
+b1.b3.b4.b5.b37.b38.b40.b42.b55.b56 0,0
+b1.b3.b4.b5.b37.b38.b40.b42.b55 1,-1
+b1.b3.b4.b5.b37.b38.b40.b42.b55 -1,1
+Black
+0
+
+Triangle t56
+b1.b3.b4.b5.b37.b38.b40.b42.b55.b56.b57 0,0
+b1.b3.b4.b5.b37.b38.b40.b42.b55.b56 1,-1
+b1.b3.b4.b5.b37.b38.b40.b42.b55.b56 -1,1
+Black
+0
+
+Triangle t57
+b1.b2.b8.b58 0,0
+b1.b2.b8 1,-1
+b1.b2.b8 -1,1
+Black
+0
+
+Triangle t58
+b1.b2.b8.b59 0,0
+b1.b2.b8 1,-1
+b1.b2.b8 -1,1
+Black
+0
+
+Triangle t59
+b1.b2.b8.b9.b60 0,0
+b1.b2.b8.b9 1,-1
+b1.b2.b8.b9 -1,1
+Black
+0
+
+Triangle t60
+b1.b3.b4.b5.b16.b17.b61 0,0
+b1.b3.b4.b5.b16.b17 1,-1
+b1.b3.b4.b5.b16.b17 -1,1
+Black
+0
+
+Triangle t61
+b1.b2.b12.b62 0,0
+b1.b2.b12 1,-1
+b1.b2.b12 -1,1
+Black
+0
+
+Triangle t62
+b1.b2.b12.b63 0,0
+b1.b2.b12 1,-1
+b1.b2.b12 -1,1
+Black
+0
+
+Triangle t63
+b1.b2.b12.b13.b64 0,0
+b1.b2.b12.b13 1,-1
+b1.b2.b12.b13 -1,1
+Black
+0
+
+Triangle t64
+b1.b3.b4.b5.b37.b38.b65 0,0
+b1.b3.b4.b5.b37.b38 1,-1
+b1.b3.b4.b5.b37.b38 -1,1
+Black
+0
+
+Triangle t65
+b1.b3.b4.b66 0,0
+b1.b3.b4 1,-1
+b1.b3.b4 -1,1
+Black
+0
+
+Triangle t66
+b1.b3.b4.b67 0,0
+b1.b3.b4 1,-1
+b1.b3.b4 -1,1
+Black
+0
+
+Triangle t67
+b1.b2.b68 0,0
+b1.b2 1,-1
+b1.b2 -1,1
+Black
+0
+
+Triangle t68
+b1.b2.b68.b69 0,0
+b1.b2.b68 1,-1
+b1.b2.b68 -1,1
+Black
+0
+
+Triangle t69
+b1.b2.b68.b69.b70 0,0
+b1.b2.b68.b69 1,-1
+b1.b2.b68.b69 -1,1
+Black
+0
+
+Triangle t70
+b1.b2.b68.b69.b70.b71 0,0
+b1.b2.b68.b69.b70 1,-1
+b1.b2.b68.b69.b70 -1,1
+Black
+0
+
+Triangle t71
+b1.b3.b4.b5.b6.b7.b72 0,0
+b1.b3.b4.b5.b6.b7 1,-1
+b1.b3.b4.b5.b6.b7 -1,1
+Black
+0
+
+Triangle t72
+b1.b3.b4.b5.b6.b7.b72.b73 0,0
+b1.b3.b4.b5.b6.b7.b72 1,-1
+b1.b3.b4.b5.b6.b7.b72 -1,1
+Black
+0
+
+Triangle t73
+b1.b3.b4.b5.b6.b7.b72.b74 0,0
+b1.b3.b4.b5.b6.b7.b72 1,-1
+b1.b3.b4.b5.b6.b7.b72 -1,1
+Black
+0
+
+Triangle t74
+b1.b3.b4.b5.b6.b7.b72.b74.b75 0,0
+b1.b3.b4.b5.b6.b7.b72.b74 1,-1
+b1.b3.b4.b5.b6.b7.b72.b74 -1,1
+Black
+0
+
+Triangle t75
+b1.b3.b4.b5.b6.b7.b72.b74.b75.b76 0,0
+b1.b3.b4.b5.b6.b7.b72.b74.b75 1,-1
+b1.b3.b4.b5.b6.b7.b72.b74.b75 -1,1
+Black
+0
+
+Triangle t76
+b1.b3.b4.b5.b6.b7.b72.b74.b75.b76.b77 0,0
+b1.b3.b4.b5.b6.b7.b72.b74.b75.b76 1,-1
+b1.b3.b4.b5.b6.b7.b72.b74.b75.b76 -1,1
+Black
+0
+
+Triangle t77
+b1.b3.b4.b5.b6.b7.b72.b74.b75.b76.b78 0,0
+b1.b3.b4.b5.b6.b7.b72.b74.b75.b76 1,-1
+b1.b3.b4.b5.b6.b7.b72.b74.b75.b76 -1,1
+Black
+0
+
+Triangle t78
+b1.b3.b4.b5.b6.b7.b72.b74.b75.b76.b79 0,0
+b1.b3.b4.b5.b6.b7.b72.b74.b75.b76 1,-1
+b1.b3.b4.b5.b6.b7.b72.b74.b75.b76 -1,1
+Black
+0
+
+Triangle t79
+b1.b3.b4.b5.b6.b7.b72.b74.b75.b80 0,0
+b1.b3.b4.b5.b6.b7.b72.b74.b75 1,-1
+b1.b3.b4.b5.b6.b7.b72.b74.b75 -1,1
+Black
+0
+
+Triangle t80
+b1.b3.b4.b5.b6.b7.b72.b74.b75.b81 0,0
+b1.b3.b4.b5.b6.b7.b72.b74.b75 1,-1
+b1.b3.b4.b5.b6.b7.b72.b74.b75 -1,1
+Black
+0
+
+Triangle t81
+b1.b3.b4.b5.b6.b7.b72.b74.b75.b82 0,0
+b1.b3.b4.b5.b6.b7.b72.b74.b75 1,-1
+b1.b3.b4.b5.b6.b7.b72.b74.b75 -1,1
+Black
+0
+
+Triangle t82
+b1.b3.b4.b5.b6.b7.b72.b83 0,0
+b1.b3.b4.b5.b6.b7.b72 1,-1
+b1.b3.b4.b5.b6.b7.b72 -1,1
+Black
+0
+
+Triangle t83
+b1.b3.b4.b5.b6.b7.b72.b74.b84 0,0
+b1.b3.b4.b5.b6.b7.b72.b74 1,-1
+b1.b3.b4.b5.b6.b7.b72.b74 -1,1
+Black
+0
+
+Triangle t84
+b1.b3.b4.b5.b6.b7.b72.b74.b84.b85 0,0
+b1.b3.b4.b5.b6.b7.b72.b74.b84 1,-1
+b1.b3.b4.b5.b6.b7.b72.b74.b84 -1,1
+Black
+0
+
+Triangle t85
+b1.b3.b4.b5.b6.b7.b72.b74.b84.b85.b86 0,0
+b1.b3.b4.b5.b6.b7.b72.b74.b84.b85 1,-1
+b1.b3.b4.b5.b6.b7.b72.b74.b84.b85 -1,1
+Black
+0
+
+Triangle t86
+b1.b3.b4.b5.b6.b7.b72.b74.b84.b85.b87 0,0
+b1.b3.b4.b5.b6.b7.b72.b74.b84.b85 1,-1
+b1.b3.b4.b5.b6.b7.b72.b74.b84.b85 -1,1
+Black
+0
+
+Triangle t87
+b1.b3.b4.b5.b6.b7.b72.b74.b84.b85.b88 0,0
+b1.b3.b4.b5.b6.b7.b72.b74.b84.b85 1,-1
+b1.b3.b4.b5.b6.b7.b72.b74.b84.b85 -1,1
+Black
+0
+
+Triangle t88
+b1.b3.b4.b5.b6.b7.b72.b74.b84.b89 0,0
+b1.b3.b4.b5.b6.b7.b72.b74.b84 1,-1
+b1.b3.b4.b5.b6.b7.b72.b74.b84 -1,1
+Black
+0
+
+Triangle t89
+b1.b3.b4.b5.b6.b7.b72.b74.b84.b90 0,0
+b1.b3.b4.b5.b6.b7.b72.b74.b84 1,-1
+b1.b3.b4.b5.b6.b7.b72.b74.b84 -1,1
+Black
+0
+
+Triangle t90
+b1.b3.b4.b5.b6.b7.b72.b74.b84.b91 0,0
+b1.b3.b4.b5.b6.b7.b72.b74.b84 1,-1
+b1.b3.b4.b5.b6.b7.b72.b74.b84 -1,1
+Black
+0
+
+Triangle t91
+b1.b3.b4.b5.b6.b7.b72.b92 0,0
+b1.b3.b4.b5.b6.b7.b72 1,-1
+b1.b3.b4.b5.b6.b7.b72 -1,1
+Black
+0
+
+Triangle t92
+b1.b3.b4.b5.b6.b7.b72.b93 0,0
+b1.b3.b4.b5.b6.b7.b72 1,-1
+b1.b3.b4.b5.b6.b7.b72 -1,1
+Black
+0
+
+Triangle t93
+b1.b3.b4.b5.b6.b7.b72.b94 0,0
+b1.b3.b4.b5.b6.b7.b72 1,-1
+b1.b3.b4.b5.b6.b7.b72 -1,1
+Black
+0
+
+Triangle t94
+b1.b3.b4.b5.b6.b7.b72.b95 0,0
+b1.b3.b4.b5.b6.b7.b72 1,-1
+b1.b3.b4.b5.b6.b7.b72 -1,1
+Black
+0
+
+Triangle t95
+b1.b3.b4.b5.b6.b7.b72.b96 0,0
+b1.b3.b4.b5.b6.b7.b72 1,-1
+b1.b3.b4.b5.b6.b7.b72 -1,1
+Black
+0
+
+Triangle t96
+b1.b3.b4.b5.b6.b7.b72.b97 0,0
+b1.b3.b4.b5.b6.b7.b72 1,-1
+b1.b3.b4.b5.b6.b7.b72 -1,1
+Black
+0
+
+Triangle t97
+b1.b3.b4.b5.b6.b7.b72.b97.b98 0,0
+b1.b3.b4.b5.b6.b7.b72.b97 1,-1
+b1.b3.b4.b5.b6.b7.b72.b97 -1,1
+Black
+0
+
+Triangle t98
+b1.b3.b4.b5.b6.b7.b72.b97.b99 0,0
+b1.b3.b4.b5.b6.b7.b72.b97 1,-1
+b1.b3.b4.b5.b6.b7.b72.b97 -1,1
+Black
+0
+
+Triangle t99
+b1.b3.b4.b5.b6.b7.b72.b97.b100 0,0
+b1.b3.b4.b5.b6.b7.b72.b97 1,-1
+b1.b3.b4.b5.b6.b7.b72.b97 -1,1
+Black
+0
+
+Triangle t100
+b1.b3.b4.b5.b6.b7.b72.b97.b101 0,0
+b1.b3.b4.b5.b6.b7.b72.b97 1,-1
+b1.b3.b4.b5.b6.b7.b72.b97 -1,1
+Black
+0
+
+Triangle t101
+b1.b3.b4.b5.b6.b7.b72.b102 0,0
+b1.b3.b4.b5.b6.b7.b72 1,-1
+b1.b3.b4.b5.b6.b7.b72 -1,1
+Black
+0
+
+Triangle t102
+b1.b3.b4.b5.b6.b7.b72.b102.b103 0,0
+b1.b3.b4.b5.b6.b7.b72.b102 1,-1
+b1.b3.b4.b5.b6.b7.b72.b102 -1,1
+Black
+0
+
+Triangle t103
+b1.b3.b4.b5.b6.b7.b72.b102.b104 0,0
+b1.b3.b4.b5.b6.b7.b72.b102 1,-1
+b1.b3.b4.b5.b6.b7.b72.b102 -1,1
+Black
+0
+
+Triangle t104
+b1.b3.b4.b5.b6.b7.b72.b102.b105 0,0
+b1.b3.b4.b5.b6.b7.b72.b102 1,-1
+b1.b3.b4.b5.b6.b7.b72.b102 -1,1
+Black
+0
+
+Triangle t105
+b1.b3.b4.b5.b6.b7.b72.b102.b106 0,0
+b1.b3.b4.b5.b6.b7.b72.b102 1,-1
+b1.b3.b4.b5.b6.b7.b72.b102 -1,1
+Black
+0
+
+Triangle t106
+b1.b3.b4.b5.b6.b7.b72.b102.b107 0,0
+b1.b3.b4.b5.b6.b7.b72.b102 1,-1
+b1.b3.b4.b5.b6.b7.b72.b102 -1,1
+Black
+0
+
+Triangle t107
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108 0,0
+b1.b3.b4.b5.b6.b7.b72.b102.b107 1,-1
+b1.b3.b4.b5.b6.b7.b72.b102.b107 -1,1
+Black
+0
+
+Triangle t108
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b109 0,0
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108 1,-1
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108 -1,1
+Black
+0
+
+Triangle t109
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b110 0,0
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108 1,-1
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108 -1,1
+Black
+0
+
+Triangle t110
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b111 0,0
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108 1,-1
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108 -1,1
+Black
+0
+
+Triangle t111
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b112 0,0
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108 1,-1
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108 -1,1
+Black
+0
+
+Triangle t112
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b113 0,0
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108 1,-1
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108 -1,1
+Black
+0
+
+Triangle t113
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b114 0,0
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108 1,-1
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108 -1,1
+Black
+0
+
+Triangle t114
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b114.b115 0,0
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b114 1,-1
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b114 -1,1
+Black
+0
+
+Triangle t115
+b1.b3.b4.b5.b6.b7.b72.b102.b116 0,0
+b1.b3.b4.b5.b6.b7.b72.b102 1,-1
+b1.b3.b4.b5.b6.b7.b72.b102 -1,1
+Black
+0
+
+Triangle t116
+b1.b3.b4.b5.b6.b7.b72.b102.b117 0,0
+b1.b3.b4.b5.b6.b7.b72.b102 1,-1
+b1.b3.b4.b5.b6.b7.b72.b102 -1,1
+Black
+0
+
+Triangle t117
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108.b118 0,0
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108 1,-1
+b1.b3.b4.b5.b6.b7.b72.b102.b107.b108 -1,1
+Black
+0
+
+Triangle t118
+b1.b3.b119 0,0
+b1.b3 1,-1
+b1.b3 -1,1
+Black
+0
+
+Triangle t119
+b1.b3.b4.b5.b6.b7.b72.b120 0,0
+b1.b3.b4.b5.b6.b7.b72 1,-1
+b1.b3.b4.b5.b6.b7.b72 -1,1
+Black
+0
+
+Triangle t120
+b1.b3.b4.b5.b6.b7.b121 0,0
+b1.b3.b4.b5.b6.b7 1,-1
+b1.b3.b4.b5.b6.b7 -1,1
+Black
+0
+
+Triangle t121
+b122.b123 0,0
+b122 1,-1
+b122 -1,1
+Black
+0
+
+Triangle t122
+b122.b124 0,0
+b122 1,-1
+b122 -1,1
+Black
+0
+
+Triangle t123
+b122.b125 0,0
+b122 1,-1
+b122 -1,1
+Black
+0
+
+Triangle t124
+b122.b126 0,0
+b122 1,-1
+b122 -1,1
+Black
+0
+
+Triangle t125
+b122.b127 0,0
+b122 1,-1
+b122 -1,1
+Black
+0
+
+Triangle t126
+b122.b127.b128 0,0
+b122.b127 1,-1
+b122.b127 -1,1
+Black
+0
+
+Triangle t127
+b122.b127.b129 0,0
+b122.b127 1,-1
+b122.b127 -1,1
+Black
+0
+
+Triangle t128
+b122.b127.b130 0,0
+b122.b127 1,-1
+b122.b127 -1,1
+Black
+0
+
+Triangle t129
+b122.b131 0,0
+b122 1,-1
+b122 -1,1
+Black
+0
+
+Triangle t130
+b122.b131.b132 0,0
+b122.b131 1,-1
+b122.b131 -1,1
+Black
+0
+
+Triangle t131
+b122.b131.b133 0,0
+b122.b131 1,-1
+b122.b131 -1,1
+Black
+0
+
+Triangle t132
+b122.b131.b134 0,0
+b122.b131 1,-1
+b122.b131 -1,1
+Black
+0
+
+Triangle t133
+b122.b131.b135 0,0
+b122.b131 1,-1
+b122.b131 -1,1
+Black
+0
+
+Triangle t134
+b122.b131.b136 0,0
+b122.b131 1,-1
+b122.b131 -1,1
+Black
+0
+
+Triangle t135
+b122.b131.b137 0,0
+b122.b131 1,-1
+b122.b131 -1,1
+Black
+0
+
+Triangle t136
+b122.b131.b138 0,0
+b122.b131 1,-1
+b122.b131 -1,1
+Black
+0
+
+Triangle t137
+b122.b131.b139 0,0
+b122.b131 1,-1
+b122.b131 -1,1
+Black
+0
+
+Triangle t138
+b122.b131.b140 0,0
+b122.b131 1,-1
+b122.b131 -1,1
+Black
+0
+
+Triangle t139
+b122.b141 0,0
+b122 1,-1
+b122 -1,1
+Black
+0
+
+Triangle t140
+b122.b141.b142 0,0
+b122.b141 1,-1
+b122.b141 -1,1
+Black
+0
+
+Triangle t141
+b122.b141.b143 0,0
+b122.b141 1,-1
+b122.b141 -1,1
+Black
+0
+
+Triangle t142
+b122.b141.b144 0,0
+b122.b141 1,-1
+b122.b141 -1,1
+Black
+0
+
+Triangle t143
+b122.b141.b145 0,0
+b122.b141 1,-1
+b122.b141 -1,1
+Black
+0
+
+Triangle t144
+b122.b141.b146 0,0
+b122.b141 1,-1
+b122.b141 -1,1
+Black
+0
+
+Triangle t145
+b122.b141.b147 0,0
+b122.b141 1,-1
+b122.b141 -1,1
+Black
+0
+
+Triangle t146
+b122.b141.b148 0,0
+b122.b141 1,-1
+b122.b141 -1,1
+Black
+0
+
+Triangle t147
+b122.b141.b149 0,0
+b122.b141 1,-1
+b122.b141 -1,1
+Black
+0
+
+Triangle t148
+b122.b141.b150 0,0
+b122.b141 1,-1
+b122.b141 -1,1
+Black
+0
+
+Triangle t149
+b122.b151 0,0
+b122 1,-1
+b122 -1,1
+Black
+0
+
+Triangle t150
+b122.b151.b152 0,0
+b122.b151 1,-1
+b122.b151 -1,1
+Black
+0
+
+Triangle t151
+b122.b151.b153 0,0
+b122.b151 1,-1
+b122.b151 -1,1
+Black
+0
+
+Triangle t152
+b122.b154 0,0
+b122 1,-1
+b122 -1,1
+Black
+0
+
+Triangle t153
+b122.b154.b155 0,0
+b122.b154 1,-1
+b122.b154 -1,1
+Black
+0
+
+Triangle t154
+b122.b154.b156 0,0
+b122.b154 1,-1
+b122.b154 -1,1
+Black
+0
+
+Triangle t155
+b122.b157 0,0
+b122 1,-1
+b122 -1,1
+Black
+0
+
+Triangle t156
+b122.b157.b158 0,0
+b122.b157 1,-1
+b122.b157 -1,1
+Black
+0
+
+Triangle t157
+b122.b157.b159 0,0
+b122.b157 1,-1
+b122.b157 -1,1
+Black
+0
+
+Triangle t158
+b122.b160 0,0
+b122 1,-1
+b122 -1,1
+Black
+0
+

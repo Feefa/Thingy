@@ -1,0 +1,15 @@
+//
+// This might work better as a file spec than a class
+// files should be commentable in this way
+//
+Joint // No name indicates thisis the root joint
+10.0f,10.0f
+180.0f
+0.0f
+
+Element Square
+Rectangle
+-10.0f,-10.0f 20.0f,20.0f
+Magenta // Windows colour
+10.0f
+

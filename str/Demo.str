@@ -1,0 +1,8 @@
+Joint
+0,0
+0
+0
+
+IncludeJoint Main main.str
+
+IncludeJoint Main.Car car.str

@@ -1,0 +1,19 @@
+Joint
+400.0f,300.0f
+0.0f
+0.0f
+
+Element Background
+Rectangle
+-400.0f,-300.0f 400.0f,300.0f
+White
+-500.0f
+
+Element Border
+RectangleOutline
+-400.0f,-300.0f 400.0f,300.0f 4.0f,0
+Black
+-250.0f
+
+
+

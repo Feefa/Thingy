@@ -1,0 +1,16 @@
+Joint
+0.0,0.0
+0.0
+0.0
+
+Element Main
+Polygon
+-64,-24 -56,-32 56,-32 64,-24 64,24 56,32 -56,32 -64,24
+@body_color@
+0.0
+
+Element Front
+Polygon
+26,-26 30,-30 30,30 26,26
+Black
+1.0

@@ -1,0 +1,58 @@
+Joint
+0,0
+0
+0
+
+Element Base
+Polygon
+-160.0,-20.0 -150,-50 -120,-70 -90,-70 -60,-65 30,-65 70,-70 100,-70 130,-60 145,-45 160,-30 160,30 145,45 130,60 100,70 70,70 30,65 -60,65 -90,70 -120,70 -150,50 -160,20
+@body_base@
+0
+
+Element Windshield
+Polygon
+30,-50 80,-55 100,-15 100,15 80,55 30,50 40,15 40,-15
+Black
+1
+
+Element RearWindshield
+Polygon
+-120,-45 -80,-45 -80,45 -120,45 -130,20 -130,-20
+Black
+1
+
+Element LeftWindows
+Polygon
+-95,-50 10,-50 70,-60 -70,-60
+Black
+1
+
+Element RightWindows
+Polygon
+-95,50 10,50 70,60 -70,60
+Black
+1
+
+Element LeftHeadlight
+Ellipse
+125,-55 135,-40
+White
+1
+
+Element RightHeadlight
+Ellipse
+125,40 135,55
+White
+1
+
+Element LeftBrakeLight
+Polygon
+-140,-50 -135,-50 -145,-35 -150,-35
+DarkRed
+1
+
+Element RightBrakeLight
+Polygon
+-140,50 -135,50 -145,35 -150,35
+DarkRed
+1

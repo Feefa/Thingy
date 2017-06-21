@@ -1,0 +1,15 @@
+//
+// This might work better as a file spec than a class
+// files should be commentable in this way
+//
+Joint
+400.0f,300.0f
+0.0f
+0.0f
+
+Element Circle
+Ellipse
+-15.0f,-15.0f 15.0f,15.0f
+SkyBlue
+1.0f
+

@@ -1,0 +1,40 @@
+//
+// This might work better as a file spec than a class
+// files should be commentable in this way
+//
+Joint // No name indicates thisis the root joint
+400.0f,300.0f
+0.0f
+0.0f
+
+Element Background
+Rectangle
+-395.0f,-295.0f 400.0f,300.0f
+@configured_color@ // Windows colour
+-500.0f
+
+Element Circle
+Ellipse
+16.0f,16.0f 216.0f,216.0f
+Blue
+1.0f
+
+IncludeJoint Loaded temp2.str  // This declaration will cause the specified file to be included with its Root element named transformed to the name of this joint
+
+DynamicJoint Head head_joint // This declaration will create a run-time reference to a sub-structure named head_joint
+0.0f,-50.0f
+0.0f
+0.0f
+
+Element Loaded.InnerSquare // Add an extra bit to the thing we just loaded
+Rectangle
+5.0f,5.0f 10.0f,10.0f
+#FF0000 // HTML Colour Code, Windows Color name or @SettingName
+50.0f
+
+//Triangle t1
+//j1 0,0
+//j2 1,0
+//j3 1,1
+//#FF0000
+//50.0f

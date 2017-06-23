@@ -24,6 +24,7 @@ namespace Thingy.WebServerLite
             this.ViewProvider = viewProvider;
             IsDefault = false;
             Priority = Priorities.Normal;
+            DefaultWebPage = "index.html";
         }
 
         public bool IsDefault { get; set; }
@@ -31,6 +32,8 @@ namespace Thingy.WebServerLite
         public int PortNumber { get; private set; }
 
         public Priorities Priority { get; set; }
+
+        string DefaultWebPage { get; set; }
 
         public IViewProvider ViewProvider { get; private set; }
 
@@ -43,13 +46,21 @@ namespace Thingy.WebServerLite
         {
             request.WebSite = this;
 
-            IController controller = controllerProvider.GetControllerForRequest(request);
-
-            if (controller != null)
+            if (!request.IsFile)
             {
-                controller.Handle(request, response);
+                IController controller = controllerProvider.GetControllerForRequest(request);
+
+                if (controller != null)
+                {
+                    controller.Handle(request, response);
+                }
+                else
+                {
+                    request.SetFileName(DefaultWebPage);
+                }
             }
-            else
+
+            if(request.IsFile)
             {
                 string filePath = Path.Combine(path, request.FilePath);
 

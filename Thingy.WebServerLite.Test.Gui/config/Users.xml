@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <components>
+
+    <component id="KnownUserFactory">
+      <parameters>
+        <defaultRoles>
+          <array>
+            <element>Player</element>
+          </array>
+        </defaultRoles>
+        <users>
+          <array>
+            <element>Admin,admin,Admin</element>
+          </array>
+        </users>
+      </parameters>
+    </component>
+    
+  </components>
+</configuration>

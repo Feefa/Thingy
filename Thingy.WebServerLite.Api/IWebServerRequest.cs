@@ -51,5 +51,21 @@ namespace Thingy.WebServerLite.Api
         /// Represents a unified view of the query and/or content fields
         /// </summary>
         IDictionary<string, string> Fields { get; }
+
+        bool IsFile { get; }
+
+        /// <summary>
+        /// Set the file name in the FilePath and change the request
+        /// into a file request
+        /// </summary>
+        /// <param name="fileName">The file name</param>
+        void SetFileName(string fileName);
+
+        /// <summary>
+        /// Gets the string from the Fields dictionary with the give name or an empty string if it does not exist
+        /// </summary>
+        /// <param name="name">The name of the field</param>
+        /// <returns>The value of the field or an empty string if it does not exist</returns>
+        string FieldOrDefault(string name);
     }
 }

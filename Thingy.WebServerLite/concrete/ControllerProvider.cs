@@ -13,12 +13,17 @@ namespace Thingy.WebServerLite
 
         public ControllerProvider(IController[] controllers)
         {
-            this.controllers = controllers;
+            this.controllers = controllers.OrderBy(c => c.Priority).ToArray();
         }
 
         public IController GetControllerForRequest(IWebServerRequest request)
         {
             return controllers.FirstOrDefault(c => c.CanHandle(request));
+        }
+
+        public IController GetNextControllerForRequest(IWebServerRequest request, Priorities prreviousPiority)
+        {
+            return controllers.FirstOrDefault(c => c.Priority > prreviousPiority && c.CanHandle(request));
         }
     }
 }

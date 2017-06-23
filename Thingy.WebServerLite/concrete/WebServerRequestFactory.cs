@@ -10,9 +10,16 @@ namespace Thingy.WebServerLite
 {
     public class WebServerRequestFactory : IWebServerRequestFactory
     {
+        private readonly IUserProvider userProvider;
+
+        public WebServerRequestFactory(IUserProvider userProvider)
+        {
+            this.userProvider = userProvider;
+        }
+
         public IWebServerRequest Create(HttpListenerRequest request)
         {
-            return new WebServerRequest(request);
+            return new WebServerRequest(userProvider, request);
         }
     }
 }

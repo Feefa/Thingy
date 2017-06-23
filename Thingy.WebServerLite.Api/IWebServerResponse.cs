@@ -10,5 +10,8 @@ namespace Thingy.WebServerLite.Api
     {
         void FromFile(string filePath);
         void NotFound(IWebServerRequest request);
+        void NotAllowed(IWebServerRequest request);
+        void InternalError(IWebServerRequest request, Exception e);
+        void FromString(string content, string contentType);
     }
 }

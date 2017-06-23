@@ -40,10 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="abstract\IControllerProvider.cs" />
     <Compile Include="abstract\IWebServerRequestFactory.cs" />
     <Compile Include="abstract\IWebServerResponseFactory.cs" />
-    <Compile Include="abstract\IControllerProvider.cs" />
     <Compile Include="concrete\ControllerProvider.cs" />
+    <Compile Include="abstract\IControllerProviderFactory.cs" />
+    <Compile Include="concrete\ControllerProviderFactory.cs" />
+    <Compile Include="abstract\IUserProvider.cs" />
+    <Compile Include="abstract\IUserFactory.cs" />
+    <Compile Include="abstract\IKnownUser.cs" />
+    <Compile Include="abstract\IKnownUserFactory.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="concrete\UserFactory.cs" />
+    <Compile Include="concrete\UserProvider.cs" />
+    <Compile Include="concrete\KnownUser.cs" />
+    <Compile Include="concrete\KnownUserFactory.cs" />
     <Compile Include="WebServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebServerRequest.cs" />

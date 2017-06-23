@@ -16,5 +16,30 @@ namespace Thingy.WebServerLite
         {
             this.response = response;
         }
+
+        public void FromFile(string filePath)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void FromString(string content, string contentType)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void InternalError(IWebServerRequest request, Exception e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void NotAllowed(IWebServerRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void NotFound(IWebServerRequest request)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

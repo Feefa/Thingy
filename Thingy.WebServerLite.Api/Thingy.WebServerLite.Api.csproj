@@ -40,7 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthorizedRoleAttribute.cs" />
+    <Compile Include="ControllerBase.cs" />
+    <Compile Include="HttpMethodAttribute.cs" />
     <Compile Include="IController.cs" />
+    <Compile Include="IUser.cs" />
+    <Compile Include="IView.cs" />
+    <Compile Include="IViewProvider.cs" />
+    <Compile Include="IViewResult.cs" />
     <Compile Include="IWebServer.cs" />
     <Compile Include="IWebServerRequest.cs" />
     <Compile Include="IWebServerResponse.cs" />

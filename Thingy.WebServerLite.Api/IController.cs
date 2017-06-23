@@ -11,6 +11,7 @@ namespace Thingy.WebServerLite.Api
         Priorities Priority { get; }
 
         void Handle(IWebServerRequest request, IWebServerResponse response);
+
         bool CanHandle(IWebServerRequest request);
     }
 }

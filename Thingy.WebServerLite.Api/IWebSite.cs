@@ -15,5 +15,7 @@ namespace Thingy.WebServerLite.Api
         bool CanHandle(IWebServerRequest request);
 
         void Handle(IWebServerRequest request, IWebServerResponse response);
+
+        IViewProvider ViewProvider { get; }
     }
 }

@@ -1,0 +1,61 @@
+#Query
+The Query property contains any query information included in the URI. Query information is separated from the path information by a question mark (?) and continues to the end of the URI. The query information returned includes the leading question mark.
+
+#Scheme
+The Scheme property returns the scheme used to initialize the Uri instance. This property does not indicate that the scheme used to initialize the Uri instance was recognized. 
+(http)
+
+#AbsolutePath
+The AbsolutePath property contains the path information that the server uses to resolve requests for information. Typically this is the path to the desired information on the server's file system, although it also can indicate the application or script the server must run to provide the information.
+
+#Fragment
+The Fragment property gets any text following a fragment marker (#) in the URI, including the fragment marker itself. Given the URI http://www.contoso.com/index.htm#main, the Fragment property would return #main.
+
+#Host, Port
+Obvious
+Unlike the Authority property, the Host property value does not include the port number. (localhost or something)
+
+The path information does not include the scheme, host name, or query portion of the URI.
+
+#Segments
+The Segments property returns an array of strings containing the "segments" (substrings) that form the URI's absolute path. 
+The first segment is obtained by parsing the absolute path from its first character until you reach a slash (/) or the end of the path. 
+Each additional segment begins at the first character after the preceding segment, and terminates with the next slash or the end of the path. 
+(A URI's absolute path contains everything after the host and port and before the query and fragment.)
+
+The following example shows the absolute path and segments for two URIs. The second example illustrates that the fragment and query are not 
+part of the absolute path and therefore are not segments.
+
+Absolute URI
+
+    http://www.contoso.com/Chapters/Chapter1/Sections/Section1.htm
+Absolute path
+
+    /Chapters/Chapter1/Sections/Section1.htm
+Segments
+
+    /Chapters/Chapter1/Sections/Section1.htm
+
+Absolute URI
+
+    http://www.contoso.com/Chapters/Chapter1/Sections/Section1.htm#page1?answer=NO
+Absolute path
+
+    /Chapters/Chapter1/Sections/Section1.htm
+Segments
+
+    /Chapters/Chapter1/Sections/Section1.htm
+
+Note that because the absolute path starts with a '/', the first segment contains it and nothing else.
+
+#IsLoopback
+
+IsLoopback returns true if the URI specified when this instance was created was 127.0.0.1, loopback, or localhost, or if the URI did not specify host information (for example, file:///c:Dir/file.txt). All other URIs return false.
+
+#FilePath (maybe useful maybe not)
+
+The value returned by this property is unescaped. If the path is recognized as a Windows file path, all forward slashes (/) are replaced by backward slashes (\).
+
+For the URI file://computer/file.ext, the absolute path is /file.ext and the local path is \\computer\file.ext.
+
+UserInfo - may be useful, inspect it

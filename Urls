@@ -59,3 +59,10 @@ The value returned by this property is unescaped. If the path is recognized as a
 For the URI file://computer/file.ext, the absolute path is /file.ext and the local path is \\computer\file.ext.
 
 UserInfo - may be useful, inspect it
+
+http://localhost:12013/Site/Controller/Page/String/1/True
+>3 segments = Site,Controller,Page,Values - this is the only way segments can be used as parameters
+3 segments = above without values
+2 segments = Site/Controller/Index
+1 segment = Site/Default/Index
+

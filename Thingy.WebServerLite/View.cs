@@ -74,21 +74,21 @@ namespace Thingy.WebServerLite
                     {
                         string template = reader.ReadTemplate();
 
-                        if (template[1] == '@')
+                        if (template[0] == '@')
                         {
                             AddTemplate(template);
                         }
                         else
                         {
-                            if (template[1] == '!')
+                            if (template[0] == '!')
                             {
                                 IncludeTemplate(path, template);
                             }
                             else
                             {
-                                if (template[1] != '*')
+                                if (template[0] != '*')
                                 {
-                                    AddContent(template);
+                                    AddContent(string.Format("{0}{1}{2}", "{", template, "}"));
                                 }
                             }
                         }
@@ -116,17 +116,26 @@ namespace Thingy.WebServerLite
         private string GetFirstTemplateElement(string template)
         {
             int spacePos = template.IndexOf(' ');
-            int delimiterPos = spacePos == -1 ? template.IndexOf('}') : spacePos;
+            int newlinePos = template.IndexOf(Environment.NewLine);
+            int delimiterPos = spacePos < newlinePos || newlinePos == -1 ? spacePos : newlinePos;
 
-            return template.Substring(2, delimiterPos - 2);
+            return template.Substring(1, delimiterPos - 1);
         }
 
         private string GetTemplateContent(string template)
         {
             int spacePos = template.IndexOf(' ');
-            int delimiterPos = spacePos == -1 ? template.IndexOf('}') : spacePos;
+            int newlinePos = template.IndexOf(Environment.NewLine);
 
-            return template.Substring(delimiterPos + 1, template.Length - delimiterPos - 2);
+            if (spacePos < newlinePos || newlinePos == -1)
+            {
+                return template.Substring(spacePos + 1, template.Length - spacePos - 1);
+            }
+            else
+            {
+                return template.Substring(newlinePos + 2, template.Length - newlinePos - 2);
+            }
+
         }
 
         public IViewResult Render(object model)
@@ -156,7 +165,7 @@ namespace Thingy.WebServerLite
 
         private string ResolveInsert(object model, StringBuilder contentBuilder, string workingText, int openPos)
         {
-            contentBuilder.Append(workingText.Substring(0, openPos - 1));
+            contentBuilder.Append(workingText.Substring(0, openPos));
             int closePos = workingText.IndexOf('}');
             string newText;
 
@@ -193,7 +202,29 @@ namespace Thingy.WebServerLite
 
             for (int index = 0; index < parameters.Length; index++)
             {
-                parameters[index] = GetPropertyValueFromModel(model, parameterNames[index]);
+                if (parameterNames[index][0] == '"')
+                {
+                    parameters[index] = parameterNames[index].Substring(1, parameterNames[index].Length - 2);
+
+                }
+                else
+                {
+                    if ((parameterNames[index][0] >= '0' && parameterNames[index][0] <= '9') || parameterNames[index][0] == '-' || parameterNames[index][0] == '+')
+                    {
+                        if(parameterNames[index].Contains("."))
+                        {
+                            parameters[index] = Convert.ToInt32(parameterNames[index]);
+                        }
+                        else
+                        {
+                            parameters[index] = Convert.ToDecimal(parameterNames[index]);
+                        }
+                    }
+                    else
+                    {
+                        parameters[index] = GetPropertyValueFromModel(model, parameterNames[index]);
+                    }
+                }
             }
 
             return methodInfo.Invoke(commandLibrary, parameters).ToString();

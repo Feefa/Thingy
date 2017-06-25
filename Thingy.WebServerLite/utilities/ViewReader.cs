@@ -49,8 +49,11 @@ namespace Thingy.WebServerLite
                 }
                 else
                 {
-                    contentBuilder.Append(buffer.Substring(0, delimiterPos - 1));
-                    buffer = buffer.Substring(delimiterPos);
+                    if (delimiterPos > 0)
+                    {
+                        contentBuilder.Append(buffer.Substring(0, delimiterPos));
+                        buffer = buffer.Substring(delimiterPos);
+                    }
                 }
 
                 Read();
@@ -82,6 +85,7 @@ namespace Thingy.WebServerLite
                     if (closePos == -1) // There were no {} in the line at all. Write the whole buffer to content and loop back
                     {
                         contentBuilder.Append(buffer);
+                        contentBuilder.Append(Environment.NewLine);
                         buffer = string.Empty;
                     }
                     else // Write up to the close } to the content and reduce the nesting level

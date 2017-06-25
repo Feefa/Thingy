@@ -4,7 +4,7 @@
     
     <component id="WebSite">
       <parameters>
-        <name>Default Web Site</name>
+        <name>Test.Gui</name>
         <portNumber>12013</portNumber>
         <path>site</path>
         <IsDefault>True</IsDefault>

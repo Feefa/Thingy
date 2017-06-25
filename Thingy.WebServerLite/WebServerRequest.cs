@@ -19,6 +19,7 @@ namespace Thingy.WebServerLite
         private readonly HttpListenerRequest request;
         private readonly char[] ampersand = new char[] { '&' };
         private readonly char[] equal = new char[] { '=' };
+        private readonly char[] slash = new char[] { '/' };
 
         private string[] urlValues;
 
@@ -58,25 +59,29 @@ namespace Thingy.WebServerLite
         /// <summary>
         /// Parse the HttpListenerRequest's Url into various properties
         /// </summary>
-        private void ParseRequestUrl()
+        private void ParseRequestUrl(bool isDefaultSiteReparse = false)
         {
-            SetDefaultValues();
-
-            if (request.Url.Segments.Length > 0)
+            if (!isDefaultSiteReparse || !IsFile)
             {
-                IsFile = request.Url.Segments[request.Url.Segments.Length - 1].Contains(".");
+                SetDefaultValues(isDefaultSiteReparse);
+                int skipSegments = isDefaultSiteReparse ? 0 : 1;
 
-                if (IsFile)
+                if (request.Url.Segments.Length > skipSegments)
                 {
-                    SetValuesForFileUrl();
+                    IsFile = request.Url.Segments[request.Url.Segments.Length - 1].Contains(".");
+
+                    if (IsFile)
+                    {
+                        SetValuesForFileUrl();
+                    }
+                    else
+                    {
+                        SetValuesForControllerUrl(isDefaultSiteReparse, skipSegments);
+                    }
                 }
-                else
-                {
-                    SetValuesForControllerUrl();
-                }
+
+                AddQueryFields();
             }
-
-            AddQueryFields();
         }
 
         /// <summary>
@@ -96,27 +101,30 @@ namespace Thingy.WebServerLite
         /// <summary>
         /// Set property values from a Url that appears to represent a Controller method call
         /// </summary>
-        private void SetValuesForControllerUrl()
+        private void SetValuesForControllerUrl(bool isDefaultSiteReparse, int skipSegments)
         {
-            WebSiteName = request.Url.Segments[0];
-
-            if (request.Url.Segments.Length > 1)
+            if (!isDefaultSiteReparse)
             {
-                ControllerName = request.Url.Segments[1];
+                WebSiteName = request.Url.Segments[skipSegments].TrimEnd(slash);
+            }
 
-                if (request.Url.Segments.Length > 2)
+            if (request.Url.Segments.Length > 1 + skipSegments)
+            {
+                ControllerName = request.Url.Segments[1 + skipSegments].TrimEnd(slash);
+
+                if (request.Url.Segments.Length > 2 + skipSegments)
                 {
-                    ControllerName = request.Url.Segments[2];
+                    ControllerMethodName = request.Url.Segments[2 + skipSegments].TrimEnd(slash);
 
                     if (request.Url.Segments.Length > 3)
                     {
-                        GetUrlValues();
+                        GetUrlValues(skipSegments);
                     }
                 }
 
-                for (int i = 1; i < request.Url.Segments.Length; i++) // Fallback file path if the controller isn't found
+                for (int i = 1 + skipSegments; i < request.Url.Segments.Length; i++) // Fallback file path if the controller isn't found
                 {
-                    FilePath = Path.Combine(request.Url.Segments[i], FilePath);
+                    FilePath = Path.Combine(FilePath, request.Url.Segments[i].TrimEnd(slash));
                 }
             }
         }
@@ -124,13 +132,13 @@ namespace Thingy.WebServerLite
         /// <summary>
         /// Get UrlValues from a Url that appears to represent a Controller method call
         /// </summary>
-        private void GetUrlValues()
+        private void GetUrlValues(int skipSegments)
         {
-            Array.Resize(ref urlValues, request.Url.Segments.Length - 3);
+            Array.Resize(ref urlValues, request.Url.Segments.Length - 3 - skipSegments);
 
-            for (int i = 3; i < request.Url.Segments.Length; i++)
+            for (int i = 3 + skipSegments; i < request.Url.Segments.Length; i++)
             {
-                UrlValues[i - 3] = request.Url.Segments[i];
+                UrlValues[i - 3 - skipSegments] = request.Url.Segments[i].TrimEnd(slash);
             }
         }
 
@@ -154,14 +162,18 @@ namespace Thingy.WebServerLite
         /// Set the default values for the properties that will pass through if nothing
         /// in the Url overrides them
         /// </summary>
-        private void SetDefaultValues()
+        private void SetDefaultValues(bool isDefaultSiteReparse)
         {
             ControllerMethodName = string.Empty;
             ControllerName = string.Empty;
             WebSiteName = "Default";
             FilePath = string.Empty;
             urlValues = new string[] { };
-            Fields = new Dictionary<string, string>();
+
+            if (!isDefaultSiteReparse) // If we're reparsing for the default site then we can leave Fields alone
+            {
+                Fields = new Dictionary<string, string>();
+            }
         }
 
         /// <summary>
@@ -195,12 +207,12 @@ namespace Thingy.WebServerLite
         /// <summary>
         /// The part of the URL that represents the controller method name
         /// </summary>
-        public string ControllerMethodName { get; private set; }
+        public string ControllerMethodName { get; set; }
 
         /// <summary>
         /// The part of the URL that represents the controller name
         /// </summary>
-        public string ControllerName { get; private set; }
+        public string ControllerName { get; set; }
 
         /// <summary>
         /// The part of the URL that represents a file path
@@ -226,7 +238,24 @@ namespace Thingy.WebServerLite
         /// <summary>
         /// The web site that is handling the request
         /// </summary>
-        public IWebSite WebSite { get; set; }
+        private IWebSite _WebSite;
+        public IWebSite WebSite
+        {
+            get
+            {
+                return _WebSite;
+            }
+
+            set
+            {
+                _WebSite = value;
+
+                if (value.IsDefault)
+                {
+                    ParseRequestUrl(true);
+                }
+            }
+        }
 
         /// <summary>
         /// The part of the URL that represents the web site name

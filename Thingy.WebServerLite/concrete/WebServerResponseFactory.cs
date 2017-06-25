@@ -10,9 +10,16 @@ namespace Thingy.WebServerLite
 {
     public class WebServerResponseFactory : IWebServerResponseFactory
     {
+        private IMimeTypeProvider mimeTypeProvider;
+
+        public WebServerResponseFactory(IMimeTypeProvider mimeTypeProvider)
+        {
+            this.mimeTypeProvider = mimeTypeProvider;
+        }
+
         public IWebServerResponse Create(HttpListenerResponse response)
         {
-            return new WebServerResponse(response);
+            return new WebServerResponse(mimeTypeProvider, response);
         }
     }
 }

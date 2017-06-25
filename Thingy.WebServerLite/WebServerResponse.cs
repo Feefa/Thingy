@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -10,36 +11,58 @@ namespace Thingy.WebServerLite
 {
     public class WebServerResponse : IWebServerResponse
     {
+        private readonly IMimeTypeProvider mimeTypeProvider;
         private readonly HttpListenerResponse response;
 
-        public WebServerResponse(HttpListenerResponse response)
+        public WebServerResponse(IMimeTypeProvider mimeTypeProvider, HttpListenerResponse response)
         {
+            this.mimeTypeProvider = mimeTypeProvider;
             this.response = response;
         }
 
         public void FromFile(string filePath)
         {
-            throw new NotImplementedException();
+            response.ContentType = mimeTypeProvider.GetMimeType(filePath);
+
+            using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
+            using (Stream outputStream = response.OutputStream)
+            {
+                fileStream.CopyTo(response.OutputStream);
+                fileStream.Close();
+                outputStream.Close();
+            }
+
+            response.Close();
         }
 
         public void FromString(string content, string contentType)
         {
-            throw new NotImplementedException();
+            response.ContentType = contentType;
+
+            using (Stream outputStream = response.OutputStream)
+            {
+                byte[] buffer = Encoding.UTF8.GetBytes(content);
+                response.ContentLength64 = buffer.Length;
+                outputStream.Write(buffer, 0, buffer.Length);
+                outputStream.Close();
+            }
+
+            response.Close();
         }
 
         public void InternalError(IWebServerRequest request, Exception e)
         {
-            throw new NotImplementedException();
+            FromString(string.Format("<html><head><title>500 Error</title></head><body><h1>500 - Internal Server Error</h2></h2><p>{0}</p></body></html>", e.ToString()), "text/html");
         }
 
         public void NotAllowed(IWebServerRequest request)
         {
-            throw new NotImplementedException();
+            FromString("<html><head><title>403 Forbidden</title></head><body><h1>403 - Forbidden</h2></h2><p>The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource, or may need an account of some sort.</p></body></html>", "text/html");
         }
 
         public void NotFound(IWebServerRequest request)
         {
-            throw new NotImplementedException();
+            FromString("<html><head><title>404 Not Found</title></head><body><h1>404 - Not Found</h2></h2><p>The requested resource could not be found but may be available in the future. Subsequent requests by the client are permissible.</p></body></html>", "text/html");
         }
     }
 }

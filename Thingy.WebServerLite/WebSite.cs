@@ -48,31 +48,46 @@ namespace Thingy.WebServerLite
 
             if (!request.IsFile)
             {
-                IController controller = controllerProvider.GetControllerForRequest(request);
-
-                if (controller != null)
-                {
-                    controller.Handle(request, response);
-                }
-                else
-                {
-                    request.SetFileName(DefaultWebPage);
-                }
+                HandleControllerRequest(request, response);
             }
 
-            if(request.IsFile)
+            if (request.IsFile)
             {
-                string filePath = Path.Combine(path, request.FilePath);
-
-                if (File.Exists(filePath))
-                {
-                    response.FromFile(filePath);
-                }
-                else
-                {
-                    response.NotFound(request);
-                }
+                HandleFileRequest(request, response);
             }
+        }
+
+        private void HandleFileRequest(IWebServerRequest request, IWebServerResponse response)
+        {
+            string filePath = Path.Combine(path, request.FilePath);
+
+            if (File.Exists(filePath))
+            {
+                response.FromFile(filePath);
+            }
+            else
+            {
+                response.NotFound(request);
+            }
+        }
+
+        private void HandleControllerRequest(IWebServerRequest request, IWebServerResponse response)
+        {
+            IController controller = controllerProvider.GetControllerForRequest(request);
+
+            if (controller != null)
+            {
+                controller.Handle(request, response);
+            }
+            else
+            {
+                request.SetFileName(DefaultWebPage);
+            }
+        }
+
+        public string GetOsFilePath(string fileName)
+        {
+            return Path.Combine(path, fileName);
         }
     }
 }

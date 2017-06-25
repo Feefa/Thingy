@@ -46,6 +46,7 @@
     <Compile Include="IController.cs" />
     <Compile Include="IUser.cs" />
     <Compile Include="IView.cs" />
+    <Compile Include="IViewLibrary.cs" />
     <Compile Include="IViewProvider.cs" />
     <Compile Include="IViewResult.cs" />
     <Compile Include="IWebServer.cs" />

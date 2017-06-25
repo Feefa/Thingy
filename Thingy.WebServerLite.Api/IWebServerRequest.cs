@@ -28,12 +28,12 @@ namespace Thingy.WebServerLite.Api
         /// <summary>
         /// The second element specified after the endpoint
         /// </summary>                 
-        string ControllerName { get; }
+        string ControllerName { get; set;  }
 
         /// <summary>
         /// The third element specified after the endpoint
         /// </summary>
-        string ControllerMethodName { get; }
+        string ControllerMethodName { get; set; }
 
         /// <summary>
         /// The Http Method from the request

@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Thingy.WebServerLite.Api;
 
-namespace Thingy.WebServerLite.Test.Gui
+namespace Thingy.WebServerLite.Api
 {
-    public class DummyController : ControllerBase
+    public interface IViewLibrary
     {
     }
 }

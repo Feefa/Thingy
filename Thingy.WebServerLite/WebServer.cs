@@ -61,11 +61,15 @@ namespace Thingy.WebServerLite
         private void ListenerCallback(IAsyncResult result)
         {
             HttpListener listener = (HttpListener)result.AsyncState;
-            listener.BeginGetContext(new AsyncCallback(ListenerCallback), listener);
-            HttpListenerContext context = listener.EndGetContext(result);
-            IWebServerRequest request = webServerRequestFactory.Create(context.Request);
-            IWebServerResponse response = webServerResponseFactory.Create(context.Response);
-            webSites.First(w => w.CanHandle(request)).Handle(request, response);
+
+            if (listener.IsListening)
+            {
+                listener.BeginGetContext(new AsyncCallback(ListenerCallback), listener);
+                HttpListenerContext context = listener.EndGetContext(result);
+                IWebServerRequest request = webServerRequestFactory.Create(context.Request);
+                IWebServerResponse response = webServerResponseFactory.Create(context.Response);
+                webSites.First(w => w.CanHandle(request)).Handle(request, response);
+            }
         }
 
         public void Stop()

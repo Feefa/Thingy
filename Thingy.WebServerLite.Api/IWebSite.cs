@@ -16,6 +16,10 @@ namespace Thingy.WebServerLite.Api
 
         void Handle(IWebServerRequest request, IWebServerResponse response);
 
+        string GetOsFilePath(string fileName);
+
         IViewProvider ViewProvider { get; }
+
+        bool IsDefault { get; }
     }
 }

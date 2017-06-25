@@ -12,7 +12,7 @@ namespace Thingy.WebServerLite.Test.Gui
         [HttpMethod("GET")]
         public string Index()
         {
-            return string.Empty;
+            return "This is the return value from the DefaultController.Index action";
         }
     }
 }

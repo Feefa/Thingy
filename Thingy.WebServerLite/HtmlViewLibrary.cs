@@ -16,13 +16,13 @@ namespace Thingy.WebServerLite
         /// POC Function
         /// </summary>
         /// <param name="name"></param>
-        /// <param name="value"></param>
+        /// <param name="caption"></param>
         /// <param name="type"></param>
         /// <param name="attributes"></param>
         /// <returns></returns>
-        string Button(string name, string value, string type = "button", string attributes = "")
+        public string Button(string name, string caption, string type = "button", string attributes = "")
         {
-            return string.Format("<button name=\"{0}\" value=\"{1}\" type=\"{2}\"{3}{4} />", name, value, type, string.IsNullOrEmpty(attributes) ? string.Empty : " ", attributes);
+            return string.Format("<button name=\"{0}\" type=\"{2}\"{3}{4}>{1}</button>", name, caption, type, string.IsNullOrEmpty(attributes) ? string.Empty : " ", attributes);
         }
     }
 }

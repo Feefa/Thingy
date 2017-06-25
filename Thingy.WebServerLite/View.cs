@@ -201,8 +201,8 @@ namespace Thingy.WebServerLite
         private string RunCommand(object model, string commandText)
         {
             int openPos = commandText.IndexOf('(');
-            string[] commandNameParts = commandText.Substring(0, openPos - 1).Split(period);
-            string[] parameterNames = commandText.Substring(openPos + 1, commandText.Length - openPos - 2).Split(comma);
+            string[] commandNameParts = commandText.Substring(0, openPos).Split(period);
+            string[] parameterNames = commandText.Substring(openPos + 1, commandText.Length - openPos - 2).Split(comma).Select(p => p.Trim()).ToArray();
             IViewLibrary commandLibrary = commandLibraries.First(l => l.GetType().Name.StartsWith(commandNameParts[0]));
             MethodInfo methodInfo = commandLibrary.GetType().GetMethods().First(m => m.Name == commandNameParts[1]);
             object[] parameters = new object[parameterNames.Length];
@@ -231,6 +231,19 @@ namespace Thingy.WebServerLite
                     {
                         parameters[index] = GetPropertyValueFromModel(model, parameterNames[index]);
                     }
+                }
+            }
+
+            ParameterInfo[] parameterInfos = methodInfo.GetParameters();
+
+            if (parameterInfos.Length > parameters.Length)
+            {
+                int start = parameters.Length;
+                Array.Resize(ref parameters, parameterInfos.Length);
+
+                for (int index = start; index < parameters.Length; index++)
+                {
+                    parameters[index] = parameterInfos[index].DefaultValue;
                 }
             }
 

@@ -1,0 +1,143 @@
+#View Engine
+
+Here's an example of what's in my head:
+
+<html>
+<head>
+<title>{Title}</title>  <-  This will simply insert the property of the model named Title at this point
+</head>
+<body>
+<p>
+  We will need some way of escaping actualy {. {{} Will be an actual {
+  Perhaps : Any single character in {} is interpreted literally.
+</p>
+<p>
+  What about includes? 
+  We'll use the {} notation obviously
+  Something like {@ViewName} to include an entire other view at this point
+  We'll need some method of including things in master pages as well
+  Got to have master pages
+</p>
+<p>
+  Then we need to be able to call out to more complicated or custom parts of the engine
+  {AccountNumber:FormatAccountNumber}
+</p>
+</body>
+</html>
+
+Some good ideas there but they need thinking through.
+Let's think about the directory structure for View templates
+
+WebSiteName
+|-Views
+  |-Master.??? <= This would be a master page for the whole site
+  |-ControllerName
+    |-Master.??? <= This would be a master page for the controller
+    |-Index.???
+    |-AddRecord.??? <= These are the view templates
+      
+Okay, so when we're resolving a view we need to do the following
+
+Start with am empty view
+In the Views directory of the web site.
+- If there is a Master then add this to the view
+Find the directory for the current controller
+- if there is a Master then add this to the view
+- if there's a view with the same name as the action then add this
+
+Our view contains
+- content
+- templates
+
+When we process a ??? file we add everything outside a template directly to the content
+When there's a template we add it to the templates collection
+If there's an include then we do the above for that too.
+
+Master.???
+
+<html>
+<head>
+<title>{@Title}</title> <= Render the Title template here
+</head>
+<body>
+  {@Content} <= Render the content template here
+</body>
+</html>
+      
+Index.???
+
+{!StandardFooter.???} <= This is an include.
+{#Title Index Page}
+{#Content
+  <p>This is the index page</p>
+  <p>Use {{}{{}{}} to render a {{} onto the page</p>
+  <p>Use {PropertyName} to render a model property onto the page (Using its ToString() method)</p>
+  <p>Use {PropertyName.NestedPropertyName to render a property of an object reference by the model.</p>
+  {@StandardFooter} <= Renders a template (this example would work better in the MP)
+  {!StandardFooter} <= This would be another way to do this
+  {:FunctionGroup.FunctionName(PropertyName1,PropertyName2,"String Literal", 0)} <= Call a function
+}
+
+View Functions
+- Return a string which is rendered into the content
+- FunctionGroup = class name 
+- FunctionName = method name
+    
+View Functions implement the IViewFunctionGroup interface <= This needs a snappier name IViewLibrary?
+
+FunctionGroupViewLibrary??
+
+So, for example
+
+We would have a class named HtmlViewLibrary
+
+HtmlViewLibrary.Button(string caption, string onClick ...)
+HtmlViewLibrary.Select(...)
+
+
+AddFile(
+ViewFile file
+ViewContent content
+ViewTemplates templates
+)
+repeat
+{
+  start = file.Pos("{");
+  if(start >= 0)
+  {
+    end = file.Pos{"}");
+  }
+
+  if (start == -1 || end == -1)
+  {
+    content.Add(file);
+    file.Clear();
+  }
+  else
+  {
+    content.Add(file, 0, start - 1);
+
+    if (file[start + 1] == '@')
+    {
+      name = ...GetNameFromTemplate...
+      templates.Add(name, file, start, end);
+    }
+    else
+    {
+      if (file[start + 1] == '!')
+      {
+        newFile = Loadfield(filename)
+        AddFile(newFile, content, templates)
+      }
+      else
+      {
+        if (file[start + 1] != '*')
+        {
+          content.Add(file, start, end) // if the view directive is anything but a template definition, comment or include then put it straight into content
+        }
+      }
+    }    
+    
+    file.remove(0, end)
+  }
+} (while file.Any())

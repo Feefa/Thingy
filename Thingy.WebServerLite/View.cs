@@ -245,9 +245,12 @@ namespace Thingy.WebServerLite
 
             for (int index = 0; index < propertyNames.Length; index++)
             {
-                PropertyInfo propertyInfo = type.GetProperties().First(p => p.Name == propertyNames[index]);
-                type = propertyInfo.PropertyType;
-                nestedModel = propertyInfo.GetValue(nestedModel);
+                if (propertyNames[index] != "model")
+                {
+                    PropertyInfo propertyInfo = type.GetProperties().First(p => p.Name == propertyNames[index]);
+                    type = propertyInfo.PropertyType;
+                    nestedModel = propertyInfo.GetValue(nestedModel);
+                }
             }
 
             return nestedModel.ToString();

@@ -119,7 +119,14 @@ namespace Thingy.WebServerLite
             int newlinePos = template.IndexOf(Environment.NewLine);
             int delimiterPos = spacePos < newlinePos || newlinePos == -1 ? spacePos : newlinePos;
 
-            return template.Substring(1, delimiterPos - 1);
+            if (delimiterPos == -1)
+            {
+                return template.Substring(1);
+            }
+            else
+            {
+                return template.Substring(1, delimiterPos - 1);
+            }
         }
 
         private string GetTemplateContent(string template)

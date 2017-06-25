@@ -74,7 +74,7 @@ namespace Thingy.WebServerLite
 
                 if (openPos != -1) // If there's any kind of open on the line then just write up to the open to the content, increase the nesting level and loop back
                 {
-                    contentBuilder.Append(buffer.Substring(0, openPos));
+                    contentBuilder.Append(buffer.Substring(0, openPos + (nestingLevel > 0 ? 1 : 0)));
                     buffer = buffer.Substring(openPos + 1);
                     nestingLevel++;
                 }
@@ -90,7 +90,7 @@ namespace Thingy.WebServerLite
                     }
                     else // Write up to the close } to the content and reduce the nesting level
                     {
-                        contentBuilder.Append(buffer.Substring(0, closePos));
+                        contentBuilder.Append(buffer.Substring(0, closePos + (nestingLevel > 1 ? 1 : 0)));
                         buffer = buffer.Substring(closePos + 1);
                         nestingLevel--;
                     }

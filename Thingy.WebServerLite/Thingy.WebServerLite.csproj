@@ -81,7 +81,11 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)Thingy.WebServerLite.Test.Gui\$(OutDir)</PostBuildEvent>
+    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)Thingy.WebServerLite.Test.Gui\$(OutDir)
+
+if not exist "..\..\..\..\..\assemblies\" mkdir "..\..\..\..\..\assemblies\"
+if not exist "..\..\..\..\..\assemblies\Thingy\" mkdir "..\..\..\..\..\assemblies\Thingy\"
+copy $(TargetPath) "..\..\..\..\..\assemblies\Thingy\$(TargetFileName)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

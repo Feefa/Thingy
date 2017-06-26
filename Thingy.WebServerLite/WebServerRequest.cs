@@ -16,7 +16,6 @@ namespace Thingy.WebServerLite
     /// </summary>
     public class WebServerRequest : IWebServerRequest
     {
-        private readonly HttpListenerRequest request;
         private readonly char[] ampersand = new char[] { '&' };
         private readonly char[] equal = new char[] { '=' };
         private readonly char[] slash = new char[] { '/' };
@@ -30,7 +29,7 @@ namespace Thingy.WebServerLite
         /// <param name="request">The HttpListenerRequest to populate the properties from</param>
         public WebServerRequest(IUserProvider userProvider, HttpListenerRequest request)
         {
-            this.request = request;
+            this.HttpListenerRequest = request;
             ParseRequestUrl();
             ParseRequestBody();
             AuthenticateUser(userProvider);
@@ -50,7 +49,7 @@ namespace Thingy.WebServerLite
         /// <param name="userProvider">The user provider</param>
         private void AuthenticateUser(IUserProvider userProvider)
         {
-            string ipAddress = request.RemoteEndPoint.Address.ToString();
+            string ipAddress = HttpListenerRequest.RemoteEndPoint.Address.ToString();
             string userId = FieldOrDefault("userId");
             string password = FieldOrDefault("password");
             User = userProvider.GetUser(ipAddress, userId, password);
@@ -66,9 +65,9 @@ namespace Thingy.WebServerLite
                 SetDefaultValues(isDefaultSiteReparse);
                 int skipSegments = isDefaultSiteReparse ? 0 : 1;
 
-                if (request.Url.Segments.Length > skipSegments)
+                if (HttpListenerRequest.Url.Segments.Length > skipSegments)
                 {
-                    IsFile = request.Url.Segments[request.Url.Segments.Length - 1].Contains(".");
+                    IsFile = HttpListenerRequest.Url.Segments[HttpListenerRequest.Url.Segments.Length - 1].Contains(".");
 
                     if (IsFile)
                     {
@@ -89,9 +88,9 @@ namespace Thingy.WebServerLite
         /// </summary>
         private void AddQueryFields()
         {
-            if (!string.IsNullOrEmpty(request.Url.Query))
+            if (!string.IsNullOrEmpty(HttpListenerRequest.Url.Query))
             {
-                foreach (string[] nameValuePair in request.Url.Query.Substring(1).Split(ampersand).Select(n => n.Split(equal)))
+                foreach (string[] nameValuePair in HttpListenerRequest.Url.Query.Substring(1).Split(ampersand).Select(n => n.Split(equal)))
                 {
                     Fields[nameValuePair[0]] = nameValuePair[1];
                 }
@@ -105,26 +104,26 @@ namespace Thingy.WebServerLite
         {
             if (!isDefaultSiteReparse)
             {
-                WebSiteName = request.Url.Segments[skipSegments].TrimEnd(slash);
+                WebSiteName = HttpListenerRequest.Url.Segments[skipSegments].TrimEnd(slash);
             }
 
-            if (request.Url.Segments.Length > 1 + skipSegments)
+            if (HttpListenerRequest.Url.Segments.Length > 1 + skipSegments)
             {
-                ControllerName = request.Url.Segments[1 + skipSegments].TrimEnd(slash);
+                ControllerName = HttpListenerRequest.Url.Segments[1 + skipSegments].TrimEnd(slash);
 
-                if (request.Url.Segments.Length > 2 + skipSegments)
+                if (HttpListenerRequest.Url.Segments.Length > 2 + skipSegments)
                 {
-                    ControllerMethodName = request.Url.Segments[2 + skipSegments].TrimEnd(slash);
+                    ControllerMethodName = HttpListenerRequest.Url.Segments[2 + skipSegments].TrimEnd(slash);
 
-                    if (request.Url.Segments.Length > 3)
+                    if (HttpListenerRequest.Url.Segments.Length > 3)
                     {
                         GetUrlValues(skipSegments);
                     }
                 }
 
-                for (int i = 1 + skipSegments; i < request.Url.Segments.Length; i++) // Fallback file path if the controller isn't found
+                for (int i = 1 + skipSegments; i < HttpListenerRequest.Url.Segments.Length; i++) // Fallback file path if the controller isn't found
                 {
-                    FilePath = Path.Combine(FilePath, request.Url.Segments[i].TrimEnd(slash));
+                    FilePath = Path.Combine(FilePath, HttpListenerRequest.Url.Segments[i].TrimEnd(slash));
                 }
             }
         }
@@ -134,11 +133,11 @@ namespace Thingy.WebServerLite
         /// </summary>
         private void GetUrlValues(int skipSegments)
         {
-            Array.Resize(ref urlValues, request.Url.Segments.Length - 3 - skipSegments);
+            Array.Resize(ref urlValues, HttpListenerRequest.Url.Segments.Length - 3 - skipSegments);
 
-            for (int i = 3 + skipSegments; i < request.Url.Segments.Length; i++)
+            for (int i = 3 + skipSegments; i < HttpListenerRequest.Url.Segments.Length; i++)
             {
-                UrlValues[i - 3 - skipSegments] = request.Url.Segments[i].TrimEnd(slash);
+                UrlValues[i - 3 - skipSegments] = HttpListenerRequest.Url.Segments[i].TrimEnd(slash);
             }
         }
 
@@ -147,13 +146,13 @@ namespace Thingy.WebServerLite
         /// </summary>
         private void SetValuesForFileUrl()
         {
-            if (request.Url.Segments.Length > 1)
+            if (HttpListenerRequest.Url.Segments.Length > 1)
             {
-                WebSiteName = request.Url.Segments[0];
+                WebSiteName = HttpListenerRequest.Url.Segments[0];
 
-                for (int i = 1; i < request.Url.Segments.Length - 1; i++)
+                for (int i = 1; i < HttpListenerRequest.Url.Segments.Length - 1; i++)
                 {
-                    FilePath = Path.Combine(request.Url.Segments[i], FilePath);
+                    FilePath = Path.Combine(HttpListenerRequest.Url.Segments[i], FilePath);
                 }
             }
         }
@@ -226,7 +225,7 @@ namespace Thingy.WebServerLite
         {
             get
             {
-                return request.HttpMethod;
+                return HttpListenerRequest.HttpMethod;
             }
         }
 
@@ -318,5 +317,7 @@ namespace Thingy.WebServerLite
                 _viewTemplateSection = value;
             }
         }
+
+        public HttpListenerRequest HttpListenerRequest { get; private set; }
     }
 }

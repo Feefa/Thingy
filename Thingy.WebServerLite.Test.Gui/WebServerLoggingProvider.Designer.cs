@@ -1,6 +1,6 @@
 ﻿namespace Thingy.WebServerLite.Test.Gui
 {
-    partial class MainForm
+    partial class WebServerLoggingProvider
     {
         /// <summary>
         /// Required designer variable.
@@ -28,21 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.MessagesTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // MainForm
+            // MessagesTextBox
+            // 
+            this.MessagesTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MessagesTextBox.Location = new System.Drawing.Point(0, 0);
+            this.MessagesTextBox.Multiline = true;
+            this.MessagesTextBox.Name = "MessagesTextBox";
+            this.MessagesTextBox.Size = new System.Drawing.Size(833, 569);
+            this.MessagesTextBox.TabIndex = 1;
+            // 
+            // WebServerLoggingProvider
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(946, 583);
-            this.Name = "MainForm";
-            this.Text = "WebServerLite Test";
-            this.DoubleClick += new System.EventHandler(this.MessagesTextBox_DoubleClick);
+            this.ClientSize = new System.Drawing.Size(833, 569);
+            this.Controls.Add(this.MessagesTextBox);
+            this.Name = "WebServerLoggingProvider";
+            this.Text = "WebServerLoggingProvider";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.TextBox MessagesTextBox;
     }
 }
-

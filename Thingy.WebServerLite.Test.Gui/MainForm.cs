@@ -19,7 +19,7 @@ namespace Thingy.WebServerLite.Test.Gui
         {
             InitializeComponent();
 
-            this.webServer = webServer;  
+            this.webServer = webServer;
         }
 
         public Form Form

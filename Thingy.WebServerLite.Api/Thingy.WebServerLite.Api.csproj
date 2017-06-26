@@ -50,6 +50,7 @@
     <Compile Include="IViewProvider.cs" />
     <Compile Include="IViewResult.cs" />
     <Compile Include="IWebServer.cs" />
+    <Compile Include="IWebServerLoggingProvider.cs" />
     <Compile Include="IWebServerRequest.cs" />
     <Compile Include="IWebServerResponse.cs" />
     <Compile Include="IWebSite.cs" />

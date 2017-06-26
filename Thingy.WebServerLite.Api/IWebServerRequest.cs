@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,8 @@ namespace Thingy.WebServerLite.Api
 {
     public interface IWebServerRequest
     {
+        HttpListenerRequest HttpListenerRequest { get; }
+
         /// <summary>
         /// The URL minus the scheme, host, port, (possibly) site name and query fields with
         /// system file separators

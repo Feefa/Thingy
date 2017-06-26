@@ -13,17 +13,20 @@ namespace Thingy.WebServerLite
         private readonly IWebSite[] webSites;
         private readonly IWebServerRequestFactory webServerRequestFactory;
         private readonly IWebServerResponseFactory webServerResponseFactory;
+        private readonly IWebServerLoggingProvider logger;
 
         HttpListener listener = null;
 
         public WebServer(
             IWebSite[] webSites,
             IWebServerRequestFactory webServerRequestFactory,
-            IWebServerResponseFactory webServerResponseFactory)
+            IWebServerResponseFactory webServerResponseFactory,
+            IWebServerLoggingProvider logger)
         {
             this.webSites = webSites.OrderBy(w => w.Priority).ToArray();
             this.webServerRequestFactory = webServerRequestFactory;
             this.webServerResponseFactory = webServerResponseFactory;
+            this.logger = logger;
         }
 
         public void Dispose()
@@ -56,6 +59,7 @@ namespace Thingy.WebServerLite
 
             listener.Start();
             listener.BeginGetContext(new AsyncCallback(ListenerCallback), listener);
+            logger.WriteMessage("Web server started");
         }
 
         private void ListenerCallback(IAsyncResult result)
@@ -69,6 +73,7 @@ namespace Thingy.WebServerLite
                 IWebServerRequest request = webServerRequestFactory.Create(context.Request);
                 IWebServerResponse response = webServerResponseFactory.Create(context.Response);
                 webSites.First(w => w.CanHandle(request)).Handle(request, response);
+                logger.LogRequest(request, response);
             }
         }
 
@@ -85,6 +90,7 @@ namespace Thingy.WebServerLite
             }
 
             listener.Stop();
+            logger.WriteMessage("Web server stopped");
         }
 
         public bool IsStarted

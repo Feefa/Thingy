@@ -12,42 +12,41 @@ namespace Thingy.WebServerLite
     public class WebServerResponse : IWebServerResponse
     {
         private readonly IMimeTypeProvider mimeTypeProvider;
-        private readonly HttpListenerResponse response;
 
         public WebServerResponse(IMimeTypeProvider mimeTypeProvider, HttpListenerResponse response)
         {
             this.mimeTypeProvider = mimeTypeProvider;
-            this.response = response;
+            this.HttpListenerResponse = response;
         }
 
         public void FromFile(string filePath)
         {
-            response.ContentType = mimeTypeProvider.GetMimeType(filePath);
+            HttpListenerResponse.ContentType = mimeTypeProvider.GetMimeType(filePath);
 
             using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
-            using (Stream outputStream = response.OutputStream)
+            using (Stream outputStream = HttpListenerResponse.OutputStream)
             {
-                fileStream.CopyTo(response.OutputStream);
+                fileStream.CopyTo(HttpListenerResponse.OutputStream);
                 fileStream.Close();
                 outputStream.Close();
             }
 
-            response.Close();
+            HttpListenerResponse.Close();
         }
 
         public void FromString(string content, string contentType)
         {
-            response.ContentType = contentType;
+            HttpListenerResponse.ContentType = contentType;
 
-            using (Stream outputStream = response.OutputStream)
+            using (Stream outputStream = HttpListenerResponse.OutputStream)
             {
                 byte[] buffer = Encoding.UTF8.GetBytes(content);
-                response.ContentLength64 = buffer.Length;
+                HttpListenerResponse.ContentLength64 = buffer.Length;
                 outputStream.Write(buffer, 0, buffer.Length);
                 outputStream.Close();
             }
 
-            response.Close();
+            HttpListenerResponse.Close();
         }
 
         public void InternalError(IWebServerRequest request, Exception e)
@@ -64,5 +63,7 @@ namespace Thingy.WebServerLite
         {
             FromString("<html><head><title>404 Not Found</title></head><body><h1>404 - Not Found</h2></h2><p>The requested resource could not be found but may be available in the future. Subsequent requests by the client are permissible.</p></body></html>", "text/html");
         }
+
+        public HttpListenerResponse HttpListenerResponse { get; private set; }
     }
 }

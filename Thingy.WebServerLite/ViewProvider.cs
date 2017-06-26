@@ -21,14 +21,14 @@ namespace Thingy.WebServerLite
         {
             string viewsDirectory = request.WebSite.GetOsFilePath("Views");
             string masterPage = Directory.GetFiles(viewsDirectory, "Master.*").FirstOrDefault();
-            string controllerDirectory = Path.Combine(viewsDirectory, request.ControllerName);
-            string controllerMasterPage = Directory.GetFiles(controllerDirectory, "Master.*").FirstOrDefault();
-            string methodPageFilter = string.Format("{0}.*", request.ControllerMethodName);
-            string controllerMethodPage = Directory.GetFiles(controllerDirectory, methodPageFilter).FirstOrDefault();
+            string sectionDirectory = Path.Combine(viewsDirectory, request.ViewTemplateSection);
+            string sectionMasterPage = Directory.GetFiles(sectionDirectory, "Master.*").FirstOrDefault();
+            string viewTemplateFilter = string.Format("{0}.*", request.ViewTemplateName);
+            string viewTemplatePage = Directory.GetFiles(sectionDirectory, viewTemplateFilter).FirstOrDefault();
 
             //TODO - Caching
 
-            return viewFactory.Create(masterPage, controllerMasterPage, controllerMethodPage);
+            return viewFactory.Create(masterPage, sectionMasterPage, viewTemplatePage);
         }
     }
 }

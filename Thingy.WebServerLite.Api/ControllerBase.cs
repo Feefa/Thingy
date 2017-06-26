@@ -10,6 +10,9 @@ namespace Thingy.WebServerLite.Api
 {
     public abstract class ControllerBase : IController
     {
+        protected IWebServerRequest Request { get; private set; }
+        protected IWebServerResponse Response { get; private set; }
+
         public ControllerBase()
         {
             Priority = Priorities.Normal;
@@ -26,6 +29,9 @@ namespace Thingy.WebServerLite.Api
 
         public void Handle(IWebServerRequest request, IWebServerResponse response)
         {
+            Request = request;
+            Response = response;
+
             if (string.IsNullOrEmpty(request.ControllerName))
             {
                 request.ControllerName = GetType().Name.Substring(0, GetType().Name.Length - 10);

@@ -282,5 +282,41 @@ namespace Thingy.WebServerLite
         /// True if the request parser determines this to be a file Url
         /// </summary>
         public bool IsFile { get; private set; }
+
+        /// <summary>
+        /// The ViewTemplateName
+        /// Defaults to the ControllerMethodName if its backing field is empty
+        /// </summary>
+        private string _viewTemplateName;
+        public string ViewTemplateName
+        {
+            get
+            {
+                return string.IsNullOrEmpty(_viewTemplateName) ? ControllerMethodName : _viewTemplateName;
+            }
+
+            set
+            {
+                _viewTemplateName = value;
+            }
+        }
+
+        /// <summary>
+        /// The ViewTemplateSection
+        /// Defaults to the ControllerMethodName if its backing field is empty
+        /// </summary>
+        private string _viewTemplateSection;
+        public string ViewTemplateSection
+        {
+            get
+            {
+                return string.IsNullOrEmpty(_viewTemplateSection) ? ControllerName : _viewTemplateSection;
+            }
+
+            set
+            {
+                _viewTemplateSection = value;
+            }
+        }
     }
 }

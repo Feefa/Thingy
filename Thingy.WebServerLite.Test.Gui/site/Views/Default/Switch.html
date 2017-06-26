@@ -1,0 +1,19 @@
+﻿{* Include the footer template *}
+{!Footer.html}
+
+{* Title template *}
+{@Title Alternative Page}
+
+{* Content template *}
+{@Content
+<h1>Alternative</h1>
+<hr />
+<p>This is the and alternative to the Index Page.</p>
+{#Lines model}
+<p>The return value contains {model.Length} elements.</p>
+<p>This button was created using a view library call</p>
+{=Html.Button("test-button", "Test")}
+{#Footer}
+}
+
+{@Lines <p>{model}</p>}

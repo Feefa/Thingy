@@ -147,8 +147,16 @@ namespace Thingy.WebServerLite
 
         public IViewResult Render(object model)
         {
+            return new ViewResult()
+            {
+                Content = InternalRender(templates["."], model),
+                ContentType = contentType
+            };
+        }
+
+        private string InternalRender(string workingText, object model)
+        {
             StringBuilder contentBuilder = new StringBuilder();
-            string workingText = templates["."];
 
             while (!string.IsNullOrEmpty(workingText))
             {
@@ -167,19 +175,47 @@ namespace Thingy.WebServerLite
 
             contentBuilder.Append(workingText);
 
-            return new ViewResult() { Content = contentBuilder.ToString(), ContentType = contentType };
+            return contentBuilder.ToString();
         }
 
         private string ResolveInsert(object model, StringBuilder contentBuilder, string workingText, int openPos)
         {
             contentBuilder.Append(workingText.Substring(0, openPos));
-            int closePos = workingText.IndexOf('}');
+            int closePos = workingText.IndexOf('}', openPos);
             string newText;
 
             if (workingText[openPos + 1] == '#')
             {
-                string templateName = workingText.Substring(openPos + 2, closePos - openPos - 2);
-                newText = templates[templateName];
+                int spacePos = workingText.IndexOf(' ', openPos);
+
+                if (spacePos == -1 || spacePos > closePos)
+                {
+                    string templateName = workingText.Substring(openPos + 2, closePos - openPos - 2);
+                    newText = templates[templateName];
+                }
+                else
+                {
+                    string templateName = workingText.Substring(openPos + 2, spacePos - openPos - 2);
+                    string propertyName = workingText.Substring(spacePos + 1, closePos - spacePos - 1);
+                    object newModel = GetPropertyValueFromModel(model, propertyName);
+
+                    if (newModel is Array)
+                    {
+                        StringBuilder newTextBuilder = new StringBuilder();
+
+                        foreach (object modelElement in (Array)newModel)
+                        {
+                            newTextBuilder.Append(InternalRender(templates[templateName], modelElement));
+                        }
+
+                        newText = newTextBuilder.ToString();
+                    }
+                    else
+                    {
+                        newText = InternalRender(templates[templateName], newModel);
+                    }
+                }
+
             }
             else
             {
@@ -191,7 +227,7 @@ namespace Thingy.WebServerLite
                 else
                 {
                     string propertyName = workingText.Substring(openPos + 1, closePos - openPos - 1);
-                    newText = GetPropertyValueFromModel(model, propertyName);
+                    newText = GetPropertyValueFromModel(model, propertyName).ToString();
                 }
             }
 
@@ -250,7 +286,7 @@ namespace Thingy.WebServerLite
             return methodInfo.Invoke(commandLibrary, parameters).ToString();
         }        
 
-        private string GetPropertyValueFromModel(object model, string propertyName)
+        private object GetPropertyValueFromModel(object model, string propertyName)
         {
             string[] propertyNames = propertyName.Split(period);
             Type type = model.GetType();
@@ -266,7 +302,7 @@ namespace Thingy.WebServerLite
                 }
             }
 
-            return nestedModel.ToString();
+            return nestedModel;
         }
     }
 }

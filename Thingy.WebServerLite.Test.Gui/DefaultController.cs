@@ -10,9 +10,9 @@ namespace Thingy.WebServerLite.Test.Gui
     public class DefaultController : ControllerBase
     {
         [HttpMethod("GET")]
-        public string Index()
+        public string[] Index()
         {
-            return "This is the return value from the DefaultController.Index action";
+            return new string[] { "This is the return value from the DefaultController.Index action", "It now spans multiple lines", "Can we render all of them?"};
         }
     }
 }

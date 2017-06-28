@@ -12,12 +12,11 @@ namespace Thingy.WebServerLite
     public class WebSite : IWebSite
     {
         private readonly IControllerProvider controllerProvider;
-        private readonly string name;
         private readonly string path;
 
         public WebSite(IViewProvider viewProvider, IControllerProviderFactory controllerProviderFactory, IController[] controllers, string name, int portNumber, string path)
         {
-            this.name = name;
+            this.Name = name;
             this.PortNumber = portNumber;
             this.path = path;
             this.controllerProvider = controllerProviderFactory.Create(controllers.Where(c => c.GetType().Assembly.GetName().Name.EndsWith(name)).ToArray());
@@ -37,9 +36,11 @@ namespace Thingy.WebServerLite
 
         public IViewProvider ViewProvider { get; private set; }
 
+        public string Name { get; private set; }
+
         public bool CanHandle(IWebServerRequest request)
         {
-            return (IsDefault || name == request.WebSiteName);
+            return (IsDefault || Name == request.WebSiteName);
         }
 
         public void Handle(IWebServerRequest request, IWebServerResponse response)

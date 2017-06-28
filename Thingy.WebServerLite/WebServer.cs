@@ -74,6 +74,7 @@ namespace Thingy.WebServerLite
                 IWebServerResponse response = webServerResponseFactory.Create(context.Response);
                 webSites.First(w => w.CanHandle(request)).Handle(request, response);
                 logger.LogRequest(request, response);
+                response.HttpListenerResponse.Close();
             }
         }
 

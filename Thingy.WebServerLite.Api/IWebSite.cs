@@ -21,5 +21,7 @@ namespace Thingy.WebServerLite.Api
         IViewProvider ViewProvider { get; }
 
         bool IsDefault { get; }
+
+        string Name { get; }
     }
 }

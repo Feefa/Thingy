@@ -30,8 +30,6 @@ namespace Thingy.WebServerLite
                 fileStream.Close();
                 outputStream.Close();
             }
-
-            HttpListenerResponse.Close();
         }
 
         public void FromString(string content, string contentType)
@@ -45,8 +43,6 @@ namespace Thingy.WebServerLite
                 outputStream.Write(buffer, 0, buffer.Length);
                 outputStream.Close();
             }
-
-            HttpListenerResponse.Close();
         }
 
         public void InternalError(IWebServerRequest request, Exception e)

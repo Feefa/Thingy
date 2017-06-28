@@ -62,3 +62,8 @@ Setting up a Thingy.WebServerLite web sever
 - Try it in a browser
   - Something like http://localhost:8080
   - You should see your index page
+  
+- Add a url reservation by opening a cmd window and entering
+  - netsh http add urlacl url="http://\*:8080/" user= {machine/userid}    
+    - You can remove one with http add urlacl url="http://\*:8080/" if you get it wrong
+- Allow the port through the windows firewall

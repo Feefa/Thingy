@@ -27,7 +27,7 @@ namespace Thingy.WebServerLite.Api
             return (GetType().Name.StartsWith(request.ControllerName ?? "Default"));
         }
 
-        public void Handle(IWebServerRequest request, IWebServerResponse response)
+        public bool Handle(IWebServerRequest request, IWebServerResponse response)
         {
             Request = request;
             Response = response;
@@ -67,8 +67,10 @@ namespace Thingy.WebServerLite.Api
             }
             else
             {
-                response.NotFound(request);
+                return false;
             }
+
+            return true;
         }
 
         private object[] GetParametersFromRequest(MethodInfo method, IWebServerRequest request)

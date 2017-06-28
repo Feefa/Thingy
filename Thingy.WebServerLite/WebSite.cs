@@ -76,11 +76,7 @@ namespace Thingy.WebServerLite
         {
             IController controller = controllerProvider.GetControllerForRequest(request);
 
-            if (controller != null)
-            {
-                controller.Handle(request, response);
-            }
-            else
+            if (controller == null || !controller.Handle(request, response))
             {
                 request.SetFileName(DefaultWebPage);
             }

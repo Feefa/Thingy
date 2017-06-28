@@ -35,7 +35,7 @@ namespace Thingy.WebServerLite
 
             if (user == null)
             {
-                if (!string.IsNullOrEmpty(userId))
+                if (string.IsNullOrEmpty(userId))
                 {
                     user = userFactory.CreateGuestUser();
                 }

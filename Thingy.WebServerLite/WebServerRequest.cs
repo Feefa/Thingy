@@ -40,7 +40,25 @@ namespace Thingy.WebServerLite
         /// </summary>
         private void ParseRequestBody()
         {
-            // TODO - Parse body and set fields accordingly
+            if (HttpListenerRequest.HasEntityBody)
+            {
+                if (HttpListenerRequest.ContentType == "application/x-www-form-urlencoded")
+                {
+                    using (Stream stream = HttpListenerRequest.InputStream)
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        string content = reader.ReadToEnd();
+
+                        foreach (string[] nameValuePair in content.Split(ampersand).Select(n => n.Split(equal)))
+                        {
+                            Fields[nameValuePair[0]] = nameValuePair[1];
+                        }
+
+                        reader.Close();
+                        stream.Close();
+                    }
+                }
+            }
         }
 
         /// <summary>

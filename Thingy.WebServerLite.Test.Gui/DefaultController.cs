@@ -12,7 +12,7 @@ namespace Thingy.WebServerLite.Test.Gui
         [HttpMethod("GET")]
         public string[] Index()
         {
-            Request.ViewTemplateName = "Switch";
+            ////Request.ViewTemplateName = "Switch";
 
             return new string[] { "This is the return value from the DefaultController.Index action", "It now spans multiple lines", "Can we render all of them?"};
         }

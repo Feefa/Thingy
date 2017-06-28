@@ -12,7 +12,7 @@ namespace Thingy.WebServerLite
     {
         private readonly IUserProvider userProvider;
 
-        public WebServerRequestFactory(IUserProvider userProvider)
+        public WebServerRequestFactory(IUserProvider userProvider, IWebServerLoggingProvider logger)
         {
             this.userProvider = userProvider;
         }

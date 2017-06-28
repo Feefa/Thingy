@@ -13,6 +13,14 @@
 <p>The return value contains {model.Length} elements.</p>
 <p>This button was created using a view library call</p>
 {=Html.Button("test-button", "Test")}
+<hr/>
+<form method="POST" action="/Default/TestPost">
+    <input type="text" name="text-input-1" />
+    <input type="hidden" name="hidden-input-1" value="hidden-value-1" />
+    <label><input type="radio" name="radio-input-1" value="radio-value-1"> On</label>
+    <label><input type="radio" name="radio-input-1" value="radio-value-2"> Off</label>
+    <button type="submit">Submit</button>
+</form>
 {#Footer}
 }
 

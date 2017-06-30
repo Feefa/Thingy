@@ -181,7 +181,7 @@ namespace Thingy.WebServerLite
         private string ResolveInsert(object model, StringBuilder contentBuilder, string workingText, int openPos)
         {
             contentBuilder.Append(workingText.Substring(0, openPos));
-            int closePos = workingText.IndexOf('}', openPos);
+            int closePos = FindMatchingClose(workingText, openPos);
             string newText;
 
             if (workingText[openPos + 1] == '#')
@@ -222,7 +222,7 @@ namespace Thingy.WebServerLite
                 if (workingText[openPos + 1] == '=')
                 {
                     string commandText = workingText.Substring(openPos + 2, closePos - openPos - 2);
-                    newText = RunCommand(model, commandText);
+                    newText = RunCommands(model, commandText);
                 }
                 else
                 {
@@ -234,57 +234,121 @@ namespace Thingy.WebServerLite
             return string.Format("{0}{1}", newText, workingText.Substring(closePos + 1));
         }
 
+        private string RunCommands(object model, string commandText)
+        {
+            if (!commandText.Contains("="))
+            {
+                return RunCommand(model, commandText);
+            }
+            else
+            {
+                int closePos = commandText.IndexOf(")");
+                string outerText = RunCommand(model, commandText.Substring(0, closePos + 1));
+                string innterText = InternalRender(commandText.Substring(closePos + 1), model);
+
+                return outerText.Replace("[[Content]]", innterText);
+            }
+        }
+
         private string RunCommand(object model, string commandText)
         {
             int openPos = commandText.IndexOf('(');
             string[] commandNameParts = commandText.Substring(0, openPos).Split(period);
-            string[] parameterNames = commandText.Substring(openPos + 1, commandText.Length - openPos - 2).Split(comma).Select(p => p.Trim()).ToArray();
             IViewLibrary commandLibrary = commandLibraries.First(l => l.GetType().Name.StartsWith(commandNameParts[0]));
             MethodInfo methodInfo = commandLibrary.GetType().GetMethods().First(m => m.Name == commandNameParts[1]);
-            object[] parameters = new object[parameterNames.Length];
 
-            for (int index = 0; index < parameters.Length; index++)
+            string parameterString = commandText.Substring(openPos + 1, commandText.Length - openPos - 2).Trim();
+
+
+            if (string.IsNullOrEmpty(parameterString))
             {
-                if (parameterNames[index][0] == '"')
-                {
-                    parameters[index] = parameterNames[index].Substring(1, parameterNames[index].Length - 2);
+                return methodInfo.Invoke(commandLibrary, null).ToString();
+            }
+            else
+            {
+                string[] parameterNames = parameterString.Split(comma).Select(p => p.Trim()).ToArray();
+                object[] parameters = new object[parameterNames.Length];
 
-                }
-                else
+                for (int index = 0; index < parameters.Length; index++)
                 {
-                    if ((parameterNames[index][0] >= '0' && parameterNames[index][0] <= '9') || parameterNames[index][0] == '-' || parameterNames[index][0] == '+')
+                    if (parameterNames[index][0] == '"')
                     {
-                        if(parameterNames[index].Contains("."))
-                        {
-                            parameters[index] = Convert.ToInt32(parameterNames[index]);
-                        }
-                        else
-                        {
-                            parameters[index] = Convert.ToDecimal(parameterNames[index]);
-                        }
+                        parameters[index] = parameterNames[index].Substring(1, parameterNames[index].Length - 2);
+
                     }
                     else
                     {
-                        parameters[index] = GetPropertyValueFromModel(model, parameterNames[index]);
+                        if ((parameterNames[index][0] >= '0' && parameterNames[index][0] <= '9') || parameterNames[index][0] == '-' || parameterNames[index][0] == '+')
+                        {
+                            if (parameterNames[index].Contains("."))
+                            {
+                                parameters[index] = Convert.ToInt32(parameterNames[index]);
+                            }
+                            else
+                            {
+                                parameters[index] = Convert.ToDecimal(parameterNames[index]);
+                            }
+                        }
+                        else
+                        {
+                            if (parameterNames[index].ToLower() == "true" || parameterNames[index].ToLower() == "false")
+                            {
+                                parameters[index] = Convert.ToBoolean(parameterNames[index]);
+                            }
+                            else
+                            {
+                                parameters[index] = GetPropertyValueFromModel(model, parameterNames[index]);
+                            }
+                        }
+                    }
+                }
+
+                ParameterInfo[] parameterInfos = methodInfo.GetParameters();
+
+                if (parameterInfos.Length > parameters.Length)
+                {
+                    int start = parameters.Length;
+                    Array.Resize(ref parameters, parameterInfos.Length);
+
+                    for (int index = start; index < parameters.Length; index++)
+                    {
+                        parameters[index] = parameterInfos[index].DefaultValue;
+                    }
+                }
+
+                return methodInfo.Invoke(commandLibrary, parameters).ToString();
+            }
+        }
+
+        private static int FindMatchingClose(string workingText, int openPos)
+        {
+            int closePos = workingText.IndexOf('}', openPos);
+            int nestedOpenPos = workingText.IndexOf('{', openPos + 1);
+            int nestingLevel = 0;
+
+            while (nestingLevel > 0 || nestedOpenPos < closePos)
+            {
+                if (nestedOpenPos == -1)
+                {
+                    nestedOpenPos = int.MaxValue;
+                }
+                else
+                {
+                    if (nestingLevel == -1 || nestedOpenPos < closePos)
+                    {
+                        nestingLevel++;
+                        nestedOpenPos = workingText.IndexOf('{', nestedOpenPos + 1);
+                    }
+                    else
+                    {
+                        nestingLevel--;
+                        closePos = workingText.IndexOf('}', closePos + 1);
                     }
                 }
             }
 
-            ParameterInfo[] parameterInfos = methodInfo.GetParameters();
-
-            if (parameterInfos.Length > parameters.Length)
-            {
-                int start = parameters.Length;
-                Array.Resize(ref parameters, parameterInfos.Length);
-
-                for (int index = start; index < parameters.Length; index++)
-                {
-                    parameters[index] = parameterInfos[index].DefaultValue;
-                }
-            }
-
-            return methodInfo.Invoke(commandLibrary, parameters).ToString();
-        }        
+            return closePos;
+        }
 
         private object GetPropertyValueFromModel(object model, string propertyName)
         {

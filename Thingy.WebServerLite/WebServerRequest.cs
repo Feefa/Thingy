@@ -68,7 +68,7 @@ namespace Thingy.WebServerLite
         private void AuthenticateUser(IUserProvider userProvider)
         {
             string ipAddress = HttpListenerRequest.RemoteEndPoint.Address.ToString();
-            string userId = FieldOrDefault("userId");
+            string userId = FieldOrDefault("userid");
             string password = FieldOrDefault("password");
             User = userProvider.GetUser(ipAddress, userId, password);
         }

@@ -168,9 +168,9 @@ namespace Thingy.WebServerLite
             {
                 WebSiteName = HttpListenerRequest.Url.Segments[0];
 
-                for (int i = 1; i < HttpListenerRequest.Url.Segments.Length - 1; i++)
+                for (int i = 1; i < HttpListenerRequest.Url.Segments.Length; i++)
                 {
-                    FilePath = Path.Combine(HttpListenerRequest.Url.Segments[i], FilePath);
+                    FilePath = Path.Combine(FilePath, HttpListenerRequest.Url.Segments[i].Trim(slash));
                 }
             }
         }

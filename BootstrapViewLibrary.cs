@@ -11,6 +11,90 @@ namespace Thingy.WebServerLite
     {
         public readonly char[] pipe = { '|', '¦' };
 
+        public string Container()
+        {
+            return "<div class=\"container\">[[Content]]</div>";
+        }
+        public string ContainerFluid()
+        {
+            return "<div class=\"container-fluid\">[[Content]]</div>";
+        }
+        public string GridRow()
+        {
+            return "<div class=\"row\">[[Content]]</div>";
+        }
+        public string GridCell(int xs = -1, int sm = -1, int md = -1, int lg = -1)
+        {
+            return new MarkUpBuilder()
+                .Append("<div class=\"")
+                .AppendFormatConditional(xs != -1, "col-xs-{0}", xs)
+                .AppendFormatConditional(sm != -1, "col-sm-{0}", sm)
+                .AppendFormatConditional(md != -1, "col-md-{0}", md)
+                .AppendFormatConditional(lg != -1, "col-lg-{0}", lg)
+                .Append("\">[[Content]]</div>")
+                .ToString();                
+        }
+        public string Form(string method, string action, string className = "", string name = "", string attributes = "")
+        {
+            return new MarkUpBuilder()
+                .AppendFormat("<form method=\"{0}\" action=\"{1}\"", method, action)
+                .AppendAttributeIfPopulated("class", className)
+                .AppendAttributeIfPopulated("name", name)
+                .AppendConditional(!string.IsNullOrEmpty(attributes), " ")
+                .Append(attributes)
+                .Append(">[[Content]]</form>")
+                .ToString();
+        }
+        public string FormInput(string id, string label, string name = "", string value = "", string type = "text", string placeholder = "", bool visibleLabel = true, bool required = false, bool autofocus = false)
+        {
+            return new MarkUpBuilder()
+                .AppendConditional(visibleLabel, "<div class=\"form-group\">")
+                .Append("<label")
+                .AppendConditional(!visibleLabel, " class=\"sr-only\"")
+                .AppendAttribute("for", id)
+                .Append(">")
+                .Append(label)
+                .Append("</label><input")
+                .AppendAttributeIfPopulated("name", name)
+                .AppendAttributeIfPopulated("value", value)
+                .AppendAttribute("type", type)
+                .AppendAttribute("id", id)
+                .AppendAttributeIfPopulated("placeholder", placeholder)
+                .AppendConditional(required, " required")
+                .AppendConditional(autofocus, " autofocus")
+                .Append(" />")
+                .AppendConditional(visibleLabel, "</div>")
+                .ToString();
+        }
+        public string FormCheckbox(string id, string label, string name = "", string value = "", bool inline = false, bool disabled = false)
+        {
+            return new MarkUpBuilder()
+                .Append("<div class=\"checkbox\"><label")
+                .AppendConditional(inline, " class=\"checkbox-inline\"")
+                .Append("><input")
+                .AppendAttribute("id", id)
+                .AppendAttributeIfPopulated("name", name)
+                .AppendAttributeIfPopulated("value", value)
+                .AppendConditional(disabled, " disabled")
+                .Append(" />")
+                .Append(label)
+                .Append("</label></div>")
+                .ToString();
+        }
+        public string Button(string caption, string type = "button", string name = "", string style = "default", string size = "", bool block = false, bool disabled = false)
+        {
+            return new MarkUpBuilder()
+                .Append("<button class=\"btn btn-", style)
+                .AppendConditional(!string.IsNullOrEmpty(size), " btn-", size)
+                .AppendConditional(block, " btn-block")
+                .Append("\"")
+                .AppendAttribute("type", type)
+                .AppendAttributeIfPopulated("name", name)
+                .AppendConditional(disabled, " disabled=\"disabled\"")
+                .Append(">", caption, "</button>")
+                .ToString();
+        }
+
         public string DropDown(string id, string caption, string[] items, string type = "dropdown", string alignment = "")
         {
             MarkUpBuilder builder = new MarkUpBuilder()
@@ -60,29 +144,25 @@ namespace Thingy.WebServerLite
             }
         }
 
-        public string ButtonGroupBegin(string label, string type = "btn-group")
+        public string ButtonGroup(string label, string type = "btn-group")
         {
-            return string.Format("<div class=\"{1}\" role=\"group\" aria-label=\"{0}\">", label, type);
+            return string.Format("<div class=\"{1}\" role=\"group\" aria-label=\"{0}\">[[Content]]</div>", label, type);
         }
 
-        public string ButtonGroupEnd()
+        public string ButtonToolbar(string label)
         {
-            return ("</div");
+            return string.Format("<div class=\"btn-toolbar\" role=\"toolbar\" aria-label=\"{0}\">[[Content]]</div>", label);
         }
 
-        public string ButtonToolbarBegin(string label)
+        public string UnorderedList(string caption)
         {
-            return string.Format("<div class=\"btn-toolbar\" role=\"toolbar\" aria-label=\"{0}\">", label);
+            return string.Format("<ul>{0}[[Content]]</ul>", caption);
         }
 
-        public string ButtonToolbarEnd()
+        public string UnorderedListItem(string caption)
         {
-            return "</div>";
+            return string.Format("<li>{0}</li>", caption);
         }
 
-        public string DropDownButton()
-        {
-
-        }
     }
 }

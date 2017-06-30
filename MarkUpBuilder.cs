@@ -15,9 +15,12 @@ namespace Thingy.WebServerLite
             this.stringBuilder = new StringBuilder();
         }
 
-        public MarkUpBuilder Append(string text)
+        public MarkUpBuilder Append(params object[] values)
         {
-            stringBuilder.Append(text);
+            foreach (object value in values)
+            {
+                stringBuilder.Append(value.ToString());
+            }
 
             return this;
         }
@@ -25,6 +28,30 @@ namespace Thingy.WebServerLite
         public MarkUpBuilder AppendFormat(string formatString, params object[] values)
         {
             return Append(string.Format(formatString, values));
+        }
+
+        public MarkUpBuilder AppendConditional(bool append, params object[] values)
+        {
+            return append ? Append(values) : this;
+        }
+        public MarkUpBuilder AppendFormatConditional(bool append, string formatString, params object[] values)
+        {
+            return AppendConditional(append, string.Format(formatString, values));
+        }
+
+        public MarkUpBuilder AppendAttribute(string name, string value)
+        {
+            return Append(" ").Append(name).Append("=\"").Append(value).Append("\"");
+        }
+
+        public MarkUpBuilder AppendAttributeIfPopulated(string name, string value)
+        {
+            return string.IsNullOrEmpty(value) ? this : AppendAttribute(name, value);
+        }
+
+        public override string ToString()
+        {
+            return stringBuilder.ToString();
         }
     }
 }

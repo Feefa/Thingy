@@ -278,11 +278,25 @@ namespace Thingy.WebServerLite
         {
             int openPos = commandText.IndexOf('(');
             string[] commandNameParts = commandText.Substring(0, openPos).Split(period);
-            IViewLibrary commandLibrary = commandLibraries.First(l => l.GetType().Name.StartsWith(commandNameParts[0]));
+            object commandLibrary;
+
+            if (commandNameParts[0] == "model")
+            {
+                commandLibrary = model;
+
+                for (int i = 1; i < commandNameParts.Length - 1; i++)
+                {
+                    PropertyInfo p = commandLibrary.GetType().GetProperty(commandNameParts[i]);
+                    commandLibrary = p.GetValue(commandLibrary);
+                }
+            }
+            else
+            {
+                commandLibrary = commandLibraries.First(l => l.GetType().Name.StartsWith(commandNameParts[0]));
+            }
+
             MethodInfo methodInfo = commandLibrary.GetType().GetMethods().First(m => m.Name == commandNameParts[1]);
-
             string parameterString = commandText.Substring(openPos + 1, commandText.Length - openPos - 2).Trim();
-
 
             if (string.IsNullOrEmpty(parameterString))
             {

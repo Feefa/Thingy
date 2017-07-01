@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Thingy.WebServerLite.Api;
 
 namespace Thingy.WebServerLite
 {
@@ -69,34 +70,44 @@ namespace Thingy.WebServerLite
 
             do
             {
-                Read();
-                int openPos = buffer.IndexOf('{');
+                Read(); // !!! I don't think this is going to work if another template starts on the same line as the previous one ends !!!
 
-                if (openPos != -1) // If there's any kind of open on the line then just write up to the open to the content, increase the nesting level and loop back
+                if (!string.IsNullOrEmpty(buffer))
                 {
-                    contentBuilder.Append(buffer.Substring(0, openPos + (nestingLevel > 0 ? 1 : 0)));
-                    buffer = buffer.Substring(openPos + 1);
-                    nestingLevel++;
-                }
-                else
-                {
-                    int closePos = buffer.IndexOf('}');
+                    int openPos = buffer.IndexOf('{');
 
-                    if (closePos == -1) // There were no {} in the line at all. Write the whole buffer to content and loop back
+                    if (openPos != -1) // If there's any kind of open on the line then just write up to the open to the content, increase the nesting level and loop back
+                                       // What about {#Template} {#Template}??
                     {
-                        contentBuilder.Append(buffer);
-                        contentBuilder.Append(Environment.NewLine);
-                        buffer = string.Empty;
+                        contentBuilder.Append(buffer.Substring(0, openPos + (nestingLevel > 0 ? 1 : 0)));
+                        buffer = buffer.Substring(openPos + 1);
+                        nestingLevel++;
                     }
-                    else // Write up to the close } to the content and reduce the nesting level
+                    else
                     {
-                        contentBuilder.Append(buffer.Substring(0, closePos + (nestingLevel > 1 ? 1 : 0)));
-                        buffer = buffer.Substring(closePos + 1);
-                        nestingLevel--;
+                        int closePos = buffer.IndexOf('}');
+
+                        if (closePos == -1) // There were no {} in the line at all. Write the whole buffer to content and loop back
+                        {
+                            contentBuilder.Append(buffer);
+                            contentBuilder.Append(Environment.NewLine);
+                            buffer = string.Empty;
+                        }
+                        else // Write up to the close } to the content and reduce the nesting level
+                        {
+                            contentBuilder.Append(buffer.Substring(0, closePos + (nestingLevel > 1 ? 1 : 0)));
+                            buffer = buffer.Substring(closePos + 1);
+                            nestingLevel--;
+                        }
                     }
                 }
             }
             while (nestingLevel != 0 && !EndOfView);
+
+            if (nestingLevel != 0)
+            {
+                throw new ViewException("Error reading template. No matching closing }");
+            }
 
             return contentBuilder.ToString();
         }

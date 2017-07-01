@@ -32,7 +32,7 @@ namespace Thingy.WebServerLite
 
         public Priorities Priority { get; set; }
 
-        string DefaultWebPage { get; set; }
+        string DefaultWebPage { get; set; }        
 
         public IViewProvider ViewProvider { get; private set; }
 

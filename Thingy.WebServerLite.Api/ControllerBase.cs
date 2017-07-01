@@ -55,9 +55,9 @@ namespace Thingy.WebServerLite.Api
                         IViewResult result = request.WebSite.ViewProvider.GetViewForRequest(request).Render(o);
                         response.FromString(result.Content, result.ContentType);
                     }
-                    catch(Exception e)
+                    catch(Exception exception)
                     {
-                        response.InternalError(request, e);
+                        response.InternalError(request, exception);
                     }
                 }
                 else
@@ -89,8 +89,14 @@ namespace Thingy.WebServerLite.Api
         {
             object[] parameters = new object[values.Length];
             int index = 0;
+            ParameterInfo[] parameterInfos = method.GetParameters();
 
-            foreach(ParameterInfo parameterInfo in method.GetParameters())
+            if (parameters.Length > parameterInfos.Length)
+            {
+                throw new ControllerException(string.Format("Too many parameters calling {0}. {1} passed. {2} required.", method.Name, parameters.Length, parameterInfos.Length));
+            }
+
+            foreach (ParameterInfo parameterInfo in parameterInfos)
             {
                 parameters[index] = StringToObject(values[index], parameterInfo.ParameterType);
                 index++;

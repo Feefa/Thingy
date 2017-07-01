@@ -15,6 +15,6 @@ namespace Thingy.WebServerLite.Api
         void NotFound(IWebServerRequest request);
         void NotAllowed(IWebServerRequest request);
         void InternalError(IWebServerRequest request, Exception e);
-        void FromString(string content, string contentType);
+        void FromString(string content, string contentType, int statusCode = 200);
     }
 }

@@ -295,11 +295,22 @@ namespace Thingy.WebServerLite
                 commandLibrary = commandLibraries.First(l => l.GetType().Name.StartsWith(commandNameParts[0]));
             }
 
-            MethodInfo methodInfo = commandLibrary.GetType().GetMethods().First(m => m.Name == commandNameParts[1]);
+            MethodInfo methodInfo = commandLibrary.GetType().GetMethods().FirstOrDefault(m => m.Name == commandNameParts[1]);
+
+            if (methodInfo == null)
+            {
+                throw new ViewException(string.Format("Error running command \"{0}\". Method could not be found.", commandText));
+            }
+
             string parameterString = commandText.Substring(openPos + 1, commandText.Length - openPos - 2).Trim();
 
             if (string.IsNullOrEmpty(parameterString))
             {
+                if (methodInfo.GetParameters().Length > 0)
+                {
+                    throw new ViewException(string.Format("Error running command \"{0}\". Not enough parameters.", commandText));
+                }
+
                 return methodInfo.Invoke(commandLibrary, null);
             }
             else
@@ -350,6 +361,11 @@ namespace Thingy.WebServerLite
 
                     for (int index = start; index < parameters.Length; index++)
                     {
+                        if (!parameterInfos[index].HasDefaultValue)
+                        {
+                            throw new ViewException(string.Format("Error running command \"{0}\". Not enough parameters.", commandText));
+                        }
+
                         parameters[index] = parameterInfos[index].DefaultValue;
                     }
                 }

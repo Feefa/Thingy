@@ -76,7 +76,7 @@ namespace Thingy.WebServerLite
                     updated = true;
                 }
             }
-            catch
+            finally
             {
                 mutex.ReleaseMutex();
             }

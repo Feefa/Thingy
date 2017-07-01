@@ -219,10 +219,11 @@ namespace Thingy.WebServerLite
             }
             else
             {
-                if (workingText[openPos + 1] == '=')
+                if (workingText[openPos + 1] == '=' || workingText[openPos + 1] == '?')
                 {
+                    char action = workingText[openPos + 1];
                     string commandText = workingText.Substring(openPos + 2, closePos - openPos - 2);
-                    newText = RunCommands(model, commandText);
+                    newText = RunCommands(model, action, commandText);
                 }
                 else
                 {
@@ -234,23 +235,46 @@ namespace Thingy.WebServerLite
             return string.Format("{0}{1}", newText, workingText.Substring(closePos + 1));
         }
 
-        private string RunCommands(object model, string commandText)
+        private string RunCommands(object model, char action, string commandText)
         {
-            if (!commandText.Contains("="))
+            // The command up to the ) needs to be run regardless of if we have a template or not and wether we're doing a conditional or an insert
+            int closePos = commandText.IndexOf(")");
+            string content;
+
+            if (action == '?')
             {
-                return RunCommand(model, commandText);
+                // This is a conditional template. We only include it if the command returns true
+                content = (bool)RunCommand(model, commandText.Substring(0, closePos + 1)) ? commandText.Substring(closePos + 1) : string.Empty;
             }
             else
             {
-                int closePos = commandText.IndexOf(")");
-                string outerText = RunCommand(model, commandText.Substring(0, closePos + 1));
-                string innterText = InternalRender(commandText.Substring(closePos + 1), model);
+                object commandResult = RunCommand(model, commandText.Substring(0, closePos + 1)).ToString();
+                string template = commandText.Substring(closePos + 1);
 
-                return outerText.Replace("[[Content]]", innterText);
+                if (template.All(c => Char.IsWhiteSpace(c)))
+                {
+                    // This is a simple command result insert
+                    content = commandResult.ToString(); 
+                }
+                else
+                {
+                    if (commandResult is string && ((string)commandResult).StartsWith("[[HasContent]]"))
+                    {
+                        // This is a 'wrapping' function that contains a placeholder for the template
+                        content = ((string)commandResult).Substring(14).Replace("[[Content]]", InternalRender(commandText.Substring(closePos + 1), model));
+                    }
+                    else
+                    {
+                        // This is a render-with-model template where the command result is the new model
+                        content = InternalRender(commandText.Substring(closePos + 1), commandResult);
+                    }
+                }
             }
+
+            return content;
         }
 
-        private string RunCommand(object model, string commandText)
+        private object RunCommand(object model, string commandText)
         {
             int openPos = commandText.IndexOf('(');
             string[] commandNameParts = commandText.Substring(0, openPos).Split(period);
@@ -262,7 +286,7 @@ namespace Thingy.WebServerLite
 
             if (string.IsNullOrEmpty(parameterString))
             {
-                return methodInfo.Invoke(commandLibrary, null).ToString();
+                return methodInfo.Invoke(commandLibrary, null);
             }
             else
             {
@@ -316,7 +340,7 @@ namespace Thingy.WebServerLite
                     }
                 }
 
-                return methodInfo.Invoke(commandLibrary, parameters).ToString();
+                return methodInfo.Invoke(commandLibrary, parameters);
             }
         }
 

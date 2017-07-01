@@ -20,6 +20,24 @@
     <label><input type="radio" name="radio-input-1" value="radio-value-1"> On</label>
     <label><input type="radio" name="radio-input-1" value="radio-value-2"> Off</label>
     <button type="submit">Submit</button>
+    <hr/>
+    {=Html.TestDiv()
+        <h2>Here's a test button</h2>
+        {=Html.Button("button", "OK")}
+        <p>Does it look OK?</p>
+    }
+    <h2>Testing conditional by passing Yes</h2>
+    {?Html.YesNoToBool("Yes")
+        <p>This was the YES call. You should see this one</p>
+    }
+    <h2>Testing conditional by passing No</h2>
+    {?Html.YesNoToBool("No")
+        <p>This was the NO call. You should not see this one</p>
+    }
+    {=Html.ShinyNewModel()
+        <h2>Shiny new model?</h2>
+        {model}
+    }
 </form>
 {#Footer}
 }

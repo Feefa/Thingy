@@ -40,12 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="abstract\IControllerProvider.cs" />
     <Compile Include="abstract\IWebServerRequestFactory.cs" />
     <Compile Include="abstract\IWebServerResponseFactory.cs" />
-    <Compile Include="concrete\ControllerProvider.cs" />
-    <Compile Include="abstract\IControllerProviderFactory.cs" />
-    <Compile Include="concrete\ControllerProviderFactory.cs" />
+    <Compile Include="ControllerProvider.cs" />
+    <Compile Include="ControllerProviderFactory.cs" />
     <Compile Include="abstract\IUserProvider.cs" />
     <Compile Include="abstract\IUserFactory.cs" />
     <Compile Include="abstract\IKnownUser.cs" />
@@ -70,7 +68,6 @@
     <Compile Include="concrete\WebServerRequestFactory.cs" />
     <Compile Include="WebServerResponse.cs" />
     <Compile Include="concrete\WebServerResponseFactory.cs" />
-    <Compile Include="WebSite.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Thingy.WebServerLite.Api\Thingy.WebServerLite.Api.csproj">

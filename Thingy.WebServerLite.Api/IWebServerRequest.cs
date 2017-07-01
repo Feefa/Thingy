@@ -24,11 +24,6 @@ namespace Thingy.WebServerLite.Api
         IWebSite WebSite { get; set; }
 
         /// <summary>
-        /// The first element specified after the endpoint
-        /// </summary>
-        string WebSiteName { get; }
-
-        /// <summary>
         /// The second element specified after the endpoint
         /// </summary>                 
         string ControllerName { get; set; }

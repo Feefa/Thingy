@@ -5,28 +5,45 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Thingy.WebServerLite.Api;
 
-namespace Thingy.WebServerLite
+namespace Thingy.WebServerLite.Api
 {
     public class WebSite : IWebSite
     {
         private readonly IControllerProvider controllerProvider;
         private readonly string path;
 
+        private bool isDefault;
+
         public WebSite(IViewProvider viewProvider, IControllerProviderFactory controllerProviderFactory, IController[] controllers, string name, int portNumber, string path)
         {
             this.Name = name;
             this.PortNumber = portNumber;
             this.path = path;
-            this.controllerProvider = controllerProviderFactory.Create(controllers.Where(c => c.GetType().Assembly.GetName().Name.EndsWith(name)).ToArray());
+            this.controllerProvider = controllerProviderFactory.Create(controllers.Where(c => c.GetType().Namespace.EndsWith(name)).ToArray());
             this.ViewProvider = viewProvider;
             IsDefault = false;
             Priority = Priorities.Normal;
             DefaultWebPage = "index.html";
         }
 
-        public bool IsDefault { get; set; }
+        public bool IsDefault
+        {
+            get
+            {
+                return isDefault;
+            }
+
+            set
+            {
+                isDefault = value;
+
+                if (isDefault && Priority > Priorities.Low)
+                {
+                    Priority = Priorities.Low;
+                }
+            }
+        }
 
         public int PortNumber { get; private set; }
 
@@ -38,12 +55,12 @@ namespace Thingy.WebServerLite
 
         public string Name { get; private set; }
 
-        public bool CanHandle(IWebServerRequest request)
+        public virtual bool CanHandle(IWebServerRequest request)
         {
-            return (IsDefault || Name == request.WebSiteName);
+            return (IsDefault || PortNumber == request.HttpListenerRequest.LocalEndPoint.Port);
         }
 
-        public void Handle(IWebServerRequest request, IWebServerResponse response)
+        public virtual void Handle(IWebServerRequest request, IWebServerResponse response)
         {
             request.WebSite = this;
 
@@ -58,7 +75,7 @@ namespace Thingy.WebServerLite
             }
         }
 
-        private void HandleFileRequest(IWebServerRequest request, IWebServerResponse response)
+        protected void HandleFileRequest(IWebServerRequest request, IWebServerResponse response)
         {
             string filePath = Path.Combine(path, request.FilePath);
 
@@ -72,7 +89,7 @@ namespace Thingy.WebServerLite
             }
         }
 
-        private void HandleControllerRequest(IWebServerRequest request, IWebServerResponse response)
+        protected void HandleControllerRequest(IWebServerRequest request, IWebServerResponse response)
         {
             IController controller = controllerProvider.GetControllerForRequest(request);
 

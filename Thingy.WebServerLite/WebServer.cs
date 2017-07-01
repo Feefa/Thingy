@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using Thingy.WebServerLite.Api;
@@ -36,6 +38,8 @@ namespace Thingy.WebServerLite
                 listener.Close();
                 listener = null;
             }
+
+            DeleteHttpNameSpaceReservations();
         }
 
         public void Start()
@@ -54,12 +58,63 @@ namespace Thingy.WebServerLite
 
             foreach(IWebSite webSite in webSites)
             {
-                listener.Prefixes.Add(string.Format("http://*:{0}/", webSite.PortNumber));
+                string prefix = string.Format("http://*:{0}/", webSite.PortNumber);
+                listener.Prefixes.Add(prefix);
+                AddHttpNameSpaceReservation(prefix);
             }
 
             listener.Start();
             listener.BeginGetContext(new AsyncCallback(ListenerCallback), listener);
             logger.WriteMessage("Web server started");
+        }
+
+        private void DeleteHttpNameSpaceReservations()
+        {
+            if (webSites != null)
+            {
+                foreach (IWebSite webSite in webSites)
+                {
+                    string prefix = string.Format("http://*:{0}/", webSite.PortNumber);
+                    DeleteHttpNameSpaceReservation(prefix);
+                }
+            }
+        }
+
+        private void AddHttpNameSpaceReservation(string prefix)
+        {
+            RunProcess(string.Format("netsh http add urlacl url={0} user={1}", prefix, WindowsIdentity.GetCurrent().Name));
+        }
+
+        private void DeleteHttpNameSpaceReservation(string prefix)
+        {
+            RunProcess(string.Format("netsh http delete urlacl url={0}", prefix));
+        }
+
+        private void RunProcess(string command)
+        {
+            logger.WriteMessage(command);
+
+            using (Process process = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "cmd.exe",
+                    Arguments = string.Format("/c {0}", command),
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    CreateNoWindow = true,
+                    Verb = "runas"
+                }
+            })
+            {
+                process.Start();
+
+                while (!process.StandardOutput.EndOfStream)
+                {
+                    string line = process.StandardOutput.ReadLine();
+                    logger.WriteMessage(line);
+                }
+            }
         }
 
         private void ListenerCallback(IAsyncResult result)
@@ -91,6 +146,7 @@ namespace Thingy.WebServerLite
             }
 
             listener.Stop();
+            DeleteHttpNameSpaceReservations();
             logger.WriteMessage("Web server stopped");
         }
 

@@ -45,6 +45,8 @@
     <Compile Include="exceptions\ControllerException.cs" />
     <Compile Include="HttpMethodAttribute.cs" />
     <Compile Include="IController.cs" />
+    <Compile Include="IControllerProvider.cs" />
+    <Compile Include="IControllerProviderFactory.cs" />
     <Compile Include="IUser.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="IViewLibrary.cs" />
@@ -59,6 +61,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="utilities\MarkUpBuilder.cs" />
     <Compile Include="exceptions\ViewException.cs" />
+    <Compile Include="WebSite.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

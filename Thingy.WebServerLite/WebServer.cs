@@ -25,7 +25,7 @@ namespace Thingy.WebServerLite
             IWebServerResponseFactory webServerResponseFactory,
             IWebServerLoggingProvider logger)
         {
-            this.webSites = webSites.OrderBy(w => w.Priority).ToArray();
+            this.webSites = webSites.OrderByDescending(w => w.Priority).ToArray();
             this.webServerRequestFactory = webServerRequestFactory;
             this.webServerResponseFactory = webServerResponseFactory;
             this.logger = logger;

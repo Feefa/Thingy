@@ -24,7 +24,7 @@ namespace Thingy.WebServerLite.Api
         {
             string controllerName = string.IsNullOrEmpty(request.ControllerName) ? "Default" : request.ControllerName;
 
-            return (GetType().Name.StartsWith(request.ControllerName ?? "Default"));
+            return (GetType().Name.StartsWith(request.ControllerName));
         }
 
         public bool Handle(IWebServerRequest request, IWebServerResponse response)
@@ -35,6 +35,13 @@ namespace Thingy.WebServerLite.Api
             if (string.IsNullOrEmpty(request.ControllerName))
             {
                 request.ControllerName = GetType().Name.Substring(0, GetType().Name.Length - 10);
+            }
+
+            if (request.IsFile)
+            {
+                request.AdjustFilePathForController();
+
+                return true;
             }
 
             if (string.IsNullOrEmpty(request.ControllerMethodName))

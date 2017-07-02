@@ -155,11 +155,13 @@ namespace Thingy.WebServerLite
         /// <summary>
         /// Get property values from a Url that appears to represent a file name
         /// </summary>
-        private void SetValuesForFileUrl()
+        private void SetValuesForFileUrl(int startFrom = 1)
         {
-            if (HttpListenerRequest.Url.Segments.Length > 1)
+            FilePath = string.Empty;
+
+            if (HttpListenerRequest.Url.Segments.Length > startFrom)
             {
-                for (int i = 1; i < HttpListenerRequest.Url.Segments.Length; i++)
+                for (int i = startFrom; i < HttpListenerRequest.Url.Segments.Length; i++)
                 {
                     FilePath = Path.Combine(FilePath, HttpListenerRequest.Url.Segments[i].Trim(slash));
                 }
@@ -180,7 +182,7 @@ namespace Thingy.WebServerLite
         }
 
         /// <summary>
-        /// Changes a controller type request into a file request by adding a page name and flipping IsFile
+        /// Changes a controller type request into a file request by adding a page name and setting IsFile
         /// </summary>
         /// <param name="fileName">The file name</param>
         public void SetFileName(string fileName)
@@ -205,6 +207,17 @@ namespace Thingy.WebServerLite
             }
 
             return string.Empty;
+        }
+
+        /// <summary>
+        /// Remove the controller name from the file path if it is present
+        /// </summary>
+        public void AdjustFilePathForController()
+        {
+            if (HttpListenerRequest.Url.Segments[1].Trim(slash).Equals(ControllerName, StringComparison.OrdinalIgnoreCase))
+            {
+                SetValuesForFileUrl(2);
+            }
         }
 
         /// <summary>

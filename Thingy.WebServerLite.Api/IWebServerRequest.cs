@@ -39,6 +39,11 @@ namespace Thingy.WebServerLite.Api
         string ViewTemplateName { get; set; }
 
         /// <summary>
+        /// Adjust the file path according to remove the controller name if it is present
+        /// </summary>
+        void AdjustFilePathForController();
+
+        /// <summary>
         /// The name of the view template section. Default to ControllerName if not specified
         /// </summary>
         string ViewTemplateSection { get; set; }

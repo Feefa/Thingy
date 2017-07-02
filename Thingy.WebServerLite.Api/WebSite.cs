@@ -63,11 +63,7 @@ namespace Thingy.WebServerLite.Api
         public virtual void Handle(IWebServerRequest request, IWebServerResponse response)
         {
             request.WebSite = this;
-
-            if (!request.IsFile)
-            {
-                HandleControllerRequest(request, response);
-            }
+            HandleControllerRequest(request, response);
 
             if (request.IsFile)
             {

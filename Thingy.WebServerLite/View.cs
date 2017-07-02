@@ -292,7 +292,12 @@ namespace Thingy.WebServerLite
             }
             else
             {
-                commandLibrary = commandLibraries.First(l => l.GetType().Name.StartsWith(commandNameParts[0]));
+                commandLibrary = commandLibraries.FirstOrDefault(l => l.GetType().Name.StartsWith(commandNameParts[0]));
+
+                if (commandLibrary == null)
+                {
+                    throw new ViewException(string.Format("Error running command \"{0}\". Could not find a command library named \"{1}\"", commandText, commandNameParts[0]));
+                }
             }
 
             MethodInfo methodInfo = commandLibrary.GetType().GetMethods().FirstOrDefault(m => m.Name == commandNameParts[1]);

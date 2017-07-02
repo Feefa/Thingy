@@ -72,7 +72,7 @@ namespace Thingy.WebServerLite
         public void NotFound(IWebServerRequest request)
         {
             FromString(new MarkUpBuilder()
-                .Append("<!DOCTYPE html>", "<html>", "<head>", "<title>403 Not Found</title>", "</head>")
+                .Append("<!DOCTYPE html>", "<html>", "<head>", "<title>404 Not Found</title>", "</head>")
                 .Append("<body style=\"font-family: calibri, ariel;\">", "<h1 style=\"background-color: #ffffcf; border : 1px solid black; padding : 8px\">404 - Not Found</h1>")
                 .Append("<div style=\"font-family: consolas, courier; border : 1px solid black; padding : 8px\">")
                 .Append("The requested resource could not be found but may be available in the future.<br/>Subsequent requests by the client are permissible.")

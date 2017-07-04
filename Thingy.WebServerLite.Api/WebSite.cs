@@ -57,13 +57,24 @@ namespace Thingy.WebServerLite.Api
 
         public virtual bool CanHandle(IWebServerRequest request)
         {
-            return (IsDefault || PortNumber == request.HttpListenerRequest.LocalEndPoint.Port);
+            bool canHandle = IsDefault || PortNumber == request.HttpListenerRequest.LocalEndPoint.Port;
+
+            if (canHandle)
+            {
+                request.Controller = controllerProvider.GetControllerForRequest(request);
+            }
+
+            return canHandle;
         }
 
         public virtual void Handle(IWebServerRequest request, IWebServerResponse response)
         {
             request.WebSite = this;
-            HandleControllerRequest(request, response);
+
+            if (!request.IsFile)
+            {
+                HandleControllerRequest(request, response);
+            }
 
             if (request.IsFile)
             {
@@ -87,9 +98,7 @@ namespace Thingy.WebServerLite.Api
 
         protected void HandleControllerRequest(IWebServerRequest request, IWebServerResponse response)
         {
-            IController controller = controllerProvider.GetControllerForRequest(request);
-
-            if (controller == null || !controller.Handle(request, response))
+            if (request.Controller == null || !request.Controller.Handle(request, response))
             {
                 request.SetFileName(DefaultWebPage);
             }

@@ -65,6 +65,9 @@ namespace Thingy.WebServerLite.Api
         /// </summary>
         IDictionary<string, string> Fields { get; }
 
+        /// <summary>
+        /// True if the request represents a reference to a file
+        /// </summary>
         bool IsFile { get; }
 
         /// <summary>
@@ -80,5 +83,11 @@ namespace Thingy.WebServerLite.Api
         /// <param name="name">The name of the field</param>
         /// <returns>The value of the field or an empty string if it does not exist</returns>
         string FieldOrDefault(string name);
+
+        /// <summary>
+        /// The controller that can handle the request
+        /// </summary>
+        IController Controller { get; set; }
+
     }
 }

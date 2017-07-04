@@ -312,5 +312,7 @@ namespace Thingy.WebServerLite
         }
 
         public HttpListenerRequest HttpListenerRequest { get; private set; }
+    
+        public IController Controller { get; set; }
     }
 }

@@ -23,31 +23,33 @@ namespace Thingy.WebServerLite.Api
         public bool CanHandle(IWebServerRequest request)
         {
             string controllerName = string.IsNullOrEmpty(request.ControllerName) ? "Default" : request.ControllerName;
+            bool canHandle = (GetType().Name.StartsWith(request.ControllerName));
 
-            return (GetType().Name.StartsWith(request.ControllerName));
+            if (canHandle)
+            {
+                if (string.IsNullOrEmpty(request.ControllerName))
+                {
+                    request.ControllerName = GetType().Name.Substring(0, GetType().Name.Length - 10);
+                }
+
+                if (string.IsNullOrEmpty(request.ControllerMethodName))
+                {
+                    request.ControllerMethodName = "Index";
+                }
+
+                if (request.IsFile)
+                {
+                    request.AdjustFilePathForController();
+                }
+            }
+
+            return canHandle;
         }
 
         public bool Handle(IWebServerRequest request, IWebServerResponse response)
         {
             Request = request;
             Response = response;
-
-            if (string.IsNullOrEmpty(request.ControllerName))
-            {
-                request.ControllerName = GetType().Name.Substring(0, GetType().Name.Length - 10);
-            }
-
-            if (request.IsFile)
-            {
-                request.AdjustFilePathForController();
-
-                return true;
-            }
-
-            if (string.IsNullOrEmpty(request.ControllerMethodName))
-            {
-                request.ControllerMethodName = "Index";
-            }
 
             MethodInfo method = GetType().GetMethods().FirstOrDefault(m => m.Name == request.ControllerMethodName && SupportsHttpMethod(m, request.HttpMethod));
 

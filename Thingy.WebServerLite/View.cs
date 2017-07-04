@@ -419,7 +419,13 @@ namespace Thingy.WebServerLite
             {
                 if (propertyNames[index] != "model")
                 {
-                    PropertyInfo propertyInfo = type.GetProperties().First(p => p.Name == propertyNames[index]);
+                    PropertyInfo propertyInfo = type.GetProperties().FirstOrDefault(p => p.Name == propertyNames[index]);
+
+                    if (propertyInfo == null)
+                    {
+                        throw new ViewException(string.Format("Error resolving property \"{0}\". {1} does not exist.", propertyName, propertyNames[index]));
+                    }
+
                     type = propertyInfo.PropertyType;
                     nestedModel = propertyInfo.GetValue(nestedModel);
                 }

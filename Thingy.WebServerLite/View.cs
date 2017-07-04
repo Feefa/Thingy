@@ -334,7 +334,7 @@ namespace Thingy.WebServerLite
                     {
                         if ((parameterNames[index][0] >= '0' && parameterNames[index][0] <= '9') || parameterNames[index][0] == '-' || parameterNames[index][0] == '+')
                         {
-                            if (parameterNames[index].Contains("."))
+                            if (!parameterNames[index].Contains("."))
                             {
                                 parameters[index] = Convert.ToInt32(parameterNames[index]);
                             }

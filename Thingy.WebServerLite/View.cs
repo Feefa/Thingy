@@ -307,23 +307,21 @@ namespace Thingy.WebServerLite
                 throw new ViewException(string.Format("Error running command \"{0}\". Method could not be found.", commandText));
             }
 
+            ParameterInfo[] parameterInfos = methodInfo.GetParameters();
             string parameterString = commandText.Substring(openPos + 1, commandText.Length - openPos - 2).Trim();
+            object[] parameters = new object[parameterInfos.Length];
+            int parametersAssigned = 0;
 
-            if (string.IsNullOrEmpty(parameterString))
-            {
-                if (methodInfo.GetParameters().Length > 0)
-                {
-                    throw new ViewException(string.Format("Error running command \"{0}\". Not enough parameters.", commandText));
-                }
-
-                return methodInfo.Invoke(commandLibrary, null);
-            }
-            else
+            if (!string.IsNullOrEmpty(parameterString))
             {
                 string[] parameterNames = parameterString.Split(comma).Select(p => p.Trim()).ToArray();
-                object[] parameters = new object[parameterNames.Length];
 
-                for (int index = 0; index < parameters.Length; index++)
+                if (parameterNames.Length > parameterInfos.Length)
+                {
+                    throw new ViewException(string.Format("Error running command \"{0}\". Too many parameters.", commandText));
+                }
+
+                for (int index = 0; index < parameterNames.Length; index++)
                 {
                     if (parameterNames[index][0] == '"')
                     {
@@ -357,25 +355,31 @@ namespace Thingy.WebServerLite
                     }
                 }
 
-                ParameterInfo[] parameterInfos = methodInfo.GetParameters();
+                parametersAssigned = parameterNames.Length;
+            }
 
-                if (parameterInfos.Length > parameters.Length)
+            if (parameterInfos.Length > parametersAssigned)
+            {
+                int start = parametersAssigned;
+
+                for (int index = start; index < parameters.Length; index++)
                 {
-                    int start = parameters.Length;
-                    Array.Resize(ref parameters, parameterInfos.Length);
-
-                    for (int index = start; index < parameters.Length; index++)
+                    if (!parameterInfos[index].HasDefaultValue)
                     {
-                        if (!parameterInfos[index].HasDefaultValue)
-                        {
-                            throw new ViewException(string.Format("Error running command \"{0}\". Not enough parameters.", commandText));
-                        }
-
-                        parameters[index] = parameterInfos[index].DefaultValue;
+                        throw new ViewException(string.Format("Error running command \"{0}\". Not enough parameters.", commandText));
                     }
-                }
 
+                    parameters[index] = parameterInfos[index].DefaultValue;
+                }
+            }
+
+            if (methodInfo.GetParameters().Any())
+            {
                 return methodInfo.Invoke(commandLibrary, parameters);
+            }
+            else
+            {
+                return methodInfo.Invoke(commandLibrary, null);
             }
         }
 

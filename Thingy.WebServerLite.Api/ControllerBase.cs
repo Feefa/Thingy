@@ -171,7 +171,7 @@ namespace Thingy.WebServerLite.Api
 
             if (type == typeof(int))
             {
-                return Convert.ToUInt32(value);
+                return Convert.ToInt32(value);
             }
 
             if (type == typeof(DateTime))

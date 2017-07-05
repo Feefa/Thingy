@@ -75,9 +75,9 @@ namespace Thingy.WebServerLite
                 if (!string.IsNullOrEmpty(buffer))
                 {
                     int openPos = buffer.IndexOf('{');
+                    int closePos = buffer.IndexOf('}');
 
-                    if (openPos != -1) // If there's any kind of open on the line then just write up to the open to the content, increase the nesting level and loop back
-                                       // What about {#Template} {#Template}??
+                    if (openPos != -1 && (closePos == -1 || openPos < closePos)) // If the next {} on the line is an open then just write up to the open to the content, increase the nesting level and loop back
                     {
                         contentBuilder.Append(buffer.Substring(0, openPos + (nestingLevel > 0 ? 1 : 0)));
                         buffer = buffer.Substring(openPos + 1);
@@ -85,8 +85,6 @@ namespace Thingy.WebServerLite
                     }
                     else
                     {
-                        int closePos = buffer.IndexOf('}');
-
                         if (closePos == -1) // There were no {} in the line at all. Write the whole buffer to content and loop back
                         {
                             contentBuilder.Append(buffer);

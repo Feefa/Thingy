@@ -24,7 +24,7 @@ namespace Thingy.WebServerLite
             HttpListenerResponse.ContentType = mimeTypeProvider.GetMimeType(filePath);
             HttpListenerResponse.StatusCode = 200;
 
-            using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
+            using (FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
             using (Stream outputStream = HttpListenerResponse.OutputStream)
             {
                 fileStream.CopyTo(HttpListenerResponse.OutputStream);

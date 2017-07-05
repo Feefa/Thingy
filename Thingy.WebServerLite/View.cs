@@ -191,11 +191,23 @@ namespace Thingy.WebServerLite
                 if (spacePos == -1 || spacePos > closePos)
                 {
                     string templateName = workingText.Substring(openPos + 2, closePos - openPos - 2);
+
+                    if(!templates.ContainsKey(templateName))
+                    {
+                        throw new ViewException(string.Format("Error rendering template named \"{0}\". No template with that name is defined.", templateName));
+                    }
+
                     newText = templates[templateName];
                 }
                 else
                 {
                     string templateName = workingText.Substring(openPos + 2, spacePos - openPos - 2);
+
+                    if (!templates.ContainsKey(templateName))
+                    {
+                        throw new ViewException(string.Format("Error rendering template named \"{0}\". No template with that name is defined.", templateName));
+                    }
+
                     string propertyName = workingText.Substring(spacePos + 1, closePos - spacePos - 1);
                     object newModel = GetPropertyValueFromModel(model, propertyName);
 

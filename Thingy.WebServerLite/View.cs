@@ -288,110 +288,127 @@ namespace Thingy.WebServerLite
 
         private object RunCommand(object model, string commandText)
         {
-            int openPos = commandText.IndexOf('(');
-            string[] commandNameParts = commandText.Substring(0, openPos).Split(period);
-            object commandLibrary;
-
-            if (commandNameParts[0] == "model")
+            try
             {
-                commandLibrary = model;
+                int openPos = commandText.IndexOf('(');
+                string[] commandNameParts = commandText.Substring(0, openPos).Split(period);
+                object commandLibrary;
 
-                for (int i = 1; i < commandNameParts.Length - 1; i++)
+                if (commandNameParts[0] == "model")
                 {
-                    PropertyInfo p = commandLibrary.GetType().GetProperty(commandNameParts[i]);
-                    commandLibrary = p.GetValue(commandLibrary);
-                }
-            }
-            else
-            {
-                commandLibrary = commandLibraries.FirstOrDefault(l => l.GetType().Name.StartsWith(commandNameParts[0]));
+                    commandLibrary = model;
 
-                if (commandLibrary == null)
-                {
-                    throw new ViewException(string.Format("Error running command \"{0}\". Could not find a command library named \"{1}\"", commandText, commandNameParts[0]));
-                }
-            }
-
-            MethodInfo methodInfo = commandLibrary.GetType().GetMethods().FirstOrDefault(m => m.Name == commandNameParts[1]);
-
-            if (methodInfo == null)
-            {
-                throw new ViewException(string.Format("Error running command \"{0}\". Method could not be found.", commandText));
-            }
-
-            ParameterInfo[] parameterInfos = methodInfo.GetParameters();
-            string parameterString = commandText.Substring(openPos + 1, commandText.Length - openPos - 2).Trim();
-            object[] parameters = new object[parameterInfos.Length];
-            int parametersAssigned = 0;
-
-            if (!string.IsNullOrEmpty(parameterString))
-            {
-                string[] parameterNames = parameterString.Split(comma).Select(p => p.Trim()).ToArray();
-
-                if (parameterNames.Length > parameterInfos.Length)
-                {
-                    throw new ViewException(string.Format("Error running command \"{0}\". Too many parameters.", commandText));
-                }
-
-                for (int index = 0; index < parameterNames.Length; index++)
-                {
-                    if (parameterNames[index][0] == '"')
+                    for (int i = 1; i < commandNameParts.Length - 1; i++)
                     {
-                        parameters[index] = parameterNames[index].Substring(1, parameterNames[index].Length - 2);
-
+                        PropertyInfo p = commandLibrary.GetType().GetProperty(commandNameParts[i]);
+                        commandLibrary = p.GetValue(commandLibrary);
                     }
-                    else
+                }
+                else
+                {
+                    commandLibrary = commandLibraries.FirstOrDefault(l => l.GetType().Name.StartsWith(commandNameParts[0]));
+
+                    if (commandLibrary == null)
                     {
-                        if ((parameterNames[index][0] >= '0' && parameterNames[index][0] <= '9') || parameterNames[index][0] == '-' || parameterNames[index][0] == '+')
+                        throw new ViewException(string.Format("Error running command \"{0}\". Could not find a command library named \"{1}\"", commandText, commandNameParts[0]));
+                    }
+                }
+
+                MethodInfo methodInfo = commandLibrary.GetType().GetMethods().FirstOrDefault(m => m.Name == commandNameParts[1]);
+
+                if (methodInfo == null)
+                {
+                    throw new ViewException(string.Format("Error running command \"{0}\". Method could not be found.", commandText));
+                }
+
+                ParameterInfo[] parameterInfos = methodInfo.GetParameters();
+                string parameterString = commandText.Substring(openPos + 1, commandText.Length - openPos - 2).Trim();
+                object[] parameters = new object[parameterInfos.Length];
+                int parametersAssigned = 0;
+
+                if (!string.IsNullOrEmpty(parameterString))
+                {
+                    string[] parameterNames = parameterString.Split(comma).Select(p => p.Trim()).ToArray();
+
+                    if (parameterNames.Length > parameterInfos.Length)
+                    {
+                        throw new ViewException(string.Format("Error running command \"{0}\". Too many parameters.", commandText));
+                    }
+
+                    for (int index = 0; index < parameterNames.Length; index++)
+                    {
+                        if (parameterNames[index][0] == '"')
                         {
-                            if (!parameterNames[index].Contains("."))
-                            {
-                                parameters[index] = Convert.ToInt32(parameterNames[index]);
-                            }
-                            else
-                            {
-                                parameters[index] = Convert.ToDecimal(parameterNames[index]);
-                            }
+                            parameters[index] = parameterNames[index].Substring(1, parameterNames[index].Length - 2);
+
                         }
                         else
                         {
-                            if (parameterNames[index].ToLower() == "true" || parameterNames[index].ToLower() == "false")
+                            if ((parameterNames[index][0] >= '0' && parameterNames[index][0] <= '9') || parameterNames[index][0] == '-' || parameterNames[index][0] == '+')
                             {
-                                parameters[index] = Convert.ToBoolean(parameterNames[index]);
+                                if (!parameterNames[index].Contains("."))
+                                {
+                                    parameters[index] = Convert.ToInt32(parameterNames[index]);
+                                }
+                                else
+                                {
+                                    parameters[index] = Convert.ToDecimal(parameterNames[index]);
+                                }
                             }
                             else
                             {
-                                parameters[index] = GetPropertyValueFromModel(model, parameterNames[index]);
+                                if (parameterNames[index].ToLower() == "true" || parameterNames[index].ToLower() == "false")
+                                {
+                                    parameters[index] = Convert.ToBoolean(parameterNames[index]);
+                                }
+                                else
+                                {
+                                    parameters[index] = GetPropertyValueFromModel(model, parameterNames[index]);
+                                }
                             }
                         }
                     }
+
+                    parametersAssigned = parameterNames.Length;
                 }
 
-                parametersAssigned = parameterNames.Length;
-            }
-
-            if (parameterInfos.Length > parametersAssigned)
-            {
-                int start = parametersAssigned;
-
-                for (int index = start; index < parameters.Length; index++)
+                if (parameterInfos.Length > parametersAssigned)
                 {
-                    if (!parameterInfos[index].HasDefaultValue)
-                    {
-                        throw new ViewException(string.Format("Error running command \"{0}\". Not enough parameters.", commandText));
-                    }
+                    int start = parametersAssigned;
 
-                    parameters[index] = parameterInfos[index].DefaultValue;
+                    for (int index = start; index < parameters.Length; index++)
+                    {
+                        if (!parameterInfos[index].HasDefaultValue)
+                        {
+                            throw new ViewException(string.Format("Error running command \"{0}\". Not enough parameters.", commandText));
+                        }
+
+                        parameters[index] = parameterInfos[index].DefaultValue;
+                    }
+                }
+                try
+                {
+                    if (methodInfo.GetParameters().Any())
+                    {
+                        return methodInfo.Invoke(commandLibrary, parameters);
+                    }
+                    else
+                    {
+                        return methodInfo.Invoke(commandLibrary, null);
+                    }
+                }
+                catch (Exception exception)
+                {
+                    throw new ViewException(string.Format("Error running command \"{0}\". The command threw an exception.", commandText), exception);
                 }
             }
-
-            if (methodInfo.GetParameters().Any())
+            catch (ViewException)
             {
-                return methodInfo.Invoke(commandLibrary, parameters);
+                throw;
             }
-            else
+            catch (Exception exception)
             {
-                return methodInfo.Invoke(commandLibrary, null);
+                throw new ViewException(string.Format("Error running command \"{0}\". Unexpected Error.", commandText), exception);
             }
         }
 

@@ -20,7 +20,7 @@ namespace Thingy.WebServerLite
         private readonly IKnownUserFactory knownUserFactory;
 
         private IList<IKnownUser> userList;
-        private Mutex mutex = new Mutex();
+        private Mutex mutex = new Mutex(false, "29ddb810-4571-486c-bbd3-8da9e49e1f3c");
 
         public UserProvider(IUserFactory userFactory, IKnownUserFactory knownUserFactory)
         {
@@ -72,6 +72,7 @@ namespace Thingy.WebServerLite
 
                 if (knownUser != null)
                 {
+                    UnlinkIpAddress(ipAddress);
                     knownUser.IpAddress = ipAddress;
                     updated = true;
                 }
@@ -84,6 +85,19 @@ namespace Thingy.WebServerLite
             return updated;
         }
 
+        /// <summary>
+        /// Unlink an IP address from any users it is associated with
+        /// NVB. This method assumes that the caller already holds the userList mutex. Be careful!
+        /// </summary>
+        /// <param name="ipAddress"></param>
+        private void UnlinkIpAddress(string ipAddress)
+        {
+            foreach (var u in userList.Where(u => u.IpAddress == ipAddress))
+            {
+                u.IpAddress = string.Empty;
+            }
+        }
+
         private IUser AddUserToUserList(string ipAddress, string userId, string password)
         {
             IUser user;
@@ -92,6 +106,7 @@ namespace Thingy.WebServerLite
 
             try
             {
+                UnlinkIpAddress(ipAddress);
                 IKnownUser knownUser = knownUserFactory.Create(ipAddress, userId, password);
                 userList.Add(knownUser);
                 user = userFactory.CreateUserFromKnownUser(knownUser);

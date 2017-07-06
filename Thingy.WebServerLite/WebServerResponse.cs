@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Thingy.WebServerLite.Api;
 
@@ -12,6 +13,8 @@ namespace Thingy.WebServerLite
     public class WebServerResponse : IWebServerResponse
     {
         private readonly IMimeTypeProvider mimeTypeProvider;
+
+        private Mutex fileIoMutex = new Mutex(false, "04f0fd63-10a5-4c01-a4be-50d10021d6d5");
 
         public WebServerResponse(IMimeTypeProvider mimeTypeProvider, HttpListenerResponse response)
         {
@@ -24,11 +27,23 @@ namespace Thingy.WebServerLite
             HttpListenerResponse.ContentType = mimeTypeProvider.GetMimeType(filePath);
             HttpListenerResponse.StatusCode = 200;
 
-            using (FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
             using (Stream outputStream = HttpListenerResponse.OutputStream)
             {
-                fileStream.CopyTo(HttpListenerResponse.OutputStream);
-                fileStream.Close();
+                fileIoMutex.WaitOne();
+
+                try
+                {
+                    using (FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
+                    {
+                        fileStream.CopyTo(HttpListenerResponse.OutputStream);
+                        fileStream.Close();
+                    }
+                }
+                finally
+                {
+                    fileIoMutex.ReleaseMutex();
+                }
+
                 outputStream.Close();
             }
         }

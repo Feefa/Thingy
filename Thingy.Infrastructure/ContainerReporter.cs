@@ -53,7 +53,7 @@ namespace Thingy.Infrastructure
         /// <param name="streamWriter">A stream writer to write the dump to</param>
         private static void DumpAssignableHandlers(StreamWriter streamWriter)
         {
-            foreach (var handler in CastleContainer.Container.Kernel.GetAssignableHandlers(typeof(object)))
+            foreach (var handler in Bootstrapper.Container.Kernel.GetAssignableHandlers(typeof(object)))
             {
                 streamWriter.WriteLine("--------------------------------------------------------------------------------");
                 streamWriter.WriteLine("{0} (id=\"{1}\") implements the following services", handler.ComponentModel.Implementation, handler.ComponentModel.Implementation.Name);

@@ -22,13 +22,24 @@ namespace Thingy.Infrastructure
                 Classes
                     .FromAssemblyInDirectory(AssemblyFilters.GetFilter())
                     .Where(p => ContainerReporter.AddType(p) &&
-                           (InfrastructureConfiguration.NamespacePrefixes.Count == 0 ||
-                            InfrastructureConfiguration.NamespacePrefixes.Any(n => p.Namespace.StartsWith(n))) &&
-                           p.GetInterfaces().Any() &&
+                           InAllowedNamespace(p.Namespace) &&
+                           p.GetInterfaces().Any(i => InAllowedNamespace(i.Namespace)) &&
                            !p.GetInterfaces().Contains(typeof(IWindsorInstaller)) &&
                            !p.GetCustomAttributes(false).Where(a => a.GetType() == typeof(DoNotInstallByConventionAttribute)).Any())
                     .WithServiceDefaultInterfaces()
                     .Configure(c => c.Named(c.Implementation.Name)));
+        }
+
+        public bool InAllowedNamespace(string theNamespace)
+        {
+            if (InfrastructureConfiguration.ConventionBasedInstallerNamespacePrefixes.Count == 0)
+            {
+                return !theNamespace.StartsWith("System") && !theNamespace.StartsWith("Castle");
+            }
+            else
+            {
+                return InfrastructureConfiguration.ConventionBasedInstallerNamespacePrefixes.Any(n => theNamespace.StartsWith(n));
+            }
         }
     }
 }

@@ -49,7 +49,7 @@
     <Compile Include="AssemblyFilters.cs" />
     <Compile Include="AssemblyInstallers.cs" />
     <Compile Include="ByConventionInstaller.cs" />
-    <Compile Include="CastleContainer.cs" />
+    <Compile Include="Bootstrapper.cs" />
     <Compile Include="ConfigurationInstallers.cs" />
     <Compile Include="ContainerReporter.cs" />
     <Compile Include="DoNotInstallByConventionAttribute.cs" />

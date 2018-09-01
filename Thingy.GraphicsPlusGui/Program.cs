@@ -15,7 +15,7 @@ namespace Thingy.GraphicsPlusGui
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             InfrastructureConfiguration.ConventionBasedInstallerNamespacePrefixes.Add("Thingy");
-            Application.Run(CastleContainer.Container.Resolve<IMainForm>().MainForm);
+            Application.Run(Bootstrapper.Container.Resolve<IMainForm>().MainForm);
         }
     }
 }

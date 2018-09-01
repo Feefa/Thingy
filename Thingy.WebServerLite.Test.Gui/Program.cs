@@ -17,7 +17,7 @@ namespace Thingy.WebServerLite.Test.Gui
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(CastleContainer.Container.Resolve<IMainForm>().Form);
+            Application.Run(Bootstrapper.Container.Resolve<IMainForm>().Form);
         }
     }
 }

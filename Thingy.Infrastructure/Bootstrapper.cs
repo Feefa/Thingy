@@ -7,7 +7,7 @@ namespace Thingy.Infrastructure
     /// <summary>
     /// Bootstrapper - Provides a Castle Windsor container 
     /// </summary>
-    public static class CastleContainer
+    public static class Bootstrapper
     {
         /// <summary>
         /// container - An internal reference to the Castle Windsor container

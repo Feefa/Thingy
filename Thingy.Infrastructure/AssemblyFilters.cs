@@ -10,7 +10,7 @@ namespace Thingy.Infrastructure
         /// <returns>An AssemblyFilter that describes the set of assemblies that we are interested in.</returns>
         internal static AssemblyFilter GetFilter()
         {
-            return new AssemblyFilter(InfrastructureConfiguration.AssemblyDirectory, InfrastructureConfiguration.AssemblyFilterMask);
+            return new AssemblyFilter(DerivedInfrastructureConfiguration.AssemblyDirectory, DerivedInfrastructureConfiguration.AssemblyFilterMask);
         }
     }
 

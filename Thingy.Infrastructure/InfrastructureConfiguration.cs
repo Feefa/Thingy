@@ -1,9 +1,80 @@
 ﻿using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
 
 namespace Thingy.Infrastructure
 {
+    /// <summary>
+    /// ----------------------------------------------------------------------------------------------------
+    /// Configuration
+    /// 
+    /// This library has been designed in such a way that it can simply be referenced by the main project
+    /// and it will perform convention-based registration with little or no further action required.
+    /// 
+    /// By default it will consider all classes defined in assemblies in the same folder as the main 
+    /// assembly for convention-based registration so long as they are NOT defined in namespaces whose names
+    /// begin 'Castle' or 'System'. 
+    /// 
+    /// A class will be registered as implementation of an interface if,
+    /// o   It actually implements that interface
+    /// o   Its name contains the name of the interface (without the I- prefix)
+    /// ----------------------------------------------------------------------------------------------------
+    /// CastleWindsorConfigurationFolderName
+    /// 
+    /// The name of a subfolder in the same folder as the main assembly where this library will look for XML
+    /// configuration files.
+    /// Update : This setting will now be interpreted as an absolute path if it contains the character 
+    ///          sequence ":\"
+    /// 
+    /// Default value = 'config'
+    /// ----------------------------------------------------------------------------------------------------
+    /// CastleWindsorConfigurationFilePattern
+    /// 
+    /// The pattern that is applied to files in the configuration folder above to identify those that should
+    /// be included.
+    /// 
+    /// Default value = '*.xml'
+    /// ----------------------------------------------------------------------------------------------------
+    /// CastleWindsorDumpFileName
+    /// 
+    /// The name of a file in the same folder as the main assembly where diagnostic information about the
+    /// dependency resolution process will be written. If this setting is set to an empty string then no
+    /// diagnostic information will be written.
+    /// Update : This setting will now be interpreted as an absolute path if it contains the character 
+    ///          sequence ":\"
+    /// 
+    /// Default value = 'CastleWindsor.dump.log'
+    /// ----------------------------------------------------------------------------------------------------
+    /// ConventionBasedInstallerNamespacePrefixes
+    /// 
+    /// A list of strings. If this setting is left empty then all classes defined in assemblies in the same
+    /// folder as the main assembly will be considered for convention-based registration unless they are 
+    /// defined in namespaces that begin 'Castle' or 'System'. If any values are added to the list then
+    /// classes will only be considered for convention-based registration if they are in a namespace whose
+    /// name begins with at least one of the strings in the list.
+    /// 
+    /// Default value = Empty List
+    /// ----------------------------------------------------------------------------------------------------
+    /// InstallerAssemblyFilterMask
+    /// 
+    /// The pattern that is applied to assemblies in the same folder as the main assembly to identify those
+    /// assemblies whose classes should be considered for convention-based registration.
+    /// 
+    /// Default value = '*'
+    /// ----------------------------------------------------------------------------------------------------
+    /// ClearLogFile
+    /// 
+    /// true = clear the log file before writing messages
+    /// false = append messages to the log file
+    /// 
+    /// Default value = true
+    /// ----------------------------------------------------------------------------------------------------
+    /// DumpAllTypes
+    /// 
+    /// true = all types that were considered for registration will be listed in the log
+    /// false = only register types will be included in the log
+    /// 
+    /// Default value = false
+    /// ----------------------------------------------------------------------------------------------------
+    /// </summary>
     public static class InfrastructureConfiguration
     {
         /// <summary>
@@ -14,10 +85,10 @@ namespace Thingy.Infrastructure
             CastleWindsorConfigurationFolderName = "config";
             CastleWindsorConfigurationFilePattern = "*.xml";
             CastleWindsorDumpFileName = "CastleWindsor.dump.log";
-            // When this is moved to a library is needs to initialise this collection to contain its namespace
-            // Or perhaps a higher-level library namespace so it automatically picks up installers in library code
             ConventionBasedInstallerNamespacePrefixes = new List<string>();
             InstallerAssemblyFilterMask = "*";
+            ClearLogFile = true;
+            DumpAllTypes = false;
         }
 
         /// <summary>
@@ -41,70 +112,33 @@ namespace Thingy.Infrastructure
         public static string InstallerAssemblyFilterMask { get; set; }
 
         /// <summary>
+        /// If this property is true then the log file will be cleared before any new messages are written. If it is false then 
+        /// messages will be appended.
+        /// </summary>
+        public static bool ClearLogFile { get; set; }
+
+        /// <summary>
+        /// If this property is true then the log file will contain a list of all types that were considered for registration. This is useful
+        /// for debugging dependency injection issues. If this property is false then only registered types will be logged.
+        /// </summary>
+        public static bool DumpAllTypes { get; set; }
+
+        /// <summary>
         /// Convention-based installer namespace prefix - Only classes in namespaces with this prefix will be wired by convention
         /// </summary>
         public static List<string> ConventionBasedInstallerNamespacePrefixes { get; set; }
 
-        /// <summary>
-        /// Gets the path to the XML Config File
-        /// </summary>
-        internal static string XmlConfigDirectory
+        public static void DumpConfiguration()
         {
-            get
-            {
-                return Path.Combine(AssemblyDirectory, CastleWindsorConfigurationFolderName);
-            }
-        }
+            ContainerReporter.AddDiagnosticMessage("Simple Configuration Properties");
+            ContainerReporter.AddDiagnosticMessage(string.Format("CastleWindsorConfigurationFolderName={0}", CastleWindsorConfigurationFolderName));
+            ContainerReporter.AddDiagnosticMessage(string.Format("CastleWindsorConfigurationFilePattern={0}", CastleWindsorConfigurationFilePattern));
+            ContainerReporter.AddDiagnosticMessage(string.Format("CastleWindsorDumpFileName={0}", CastleWindsorDumpFileName));
+            ContainerReporter.AddDiagnosticMessage(string.Format("InstallerAssemblyFilterMask={0}", InstallerAssemblyFilterMask));
 
-        internal static string XmlConfigPattern 
-        {
-            get
+            foreach (string n in ConventionBasedInstallerNamespacePrefixes)
             {
-                return CastleWindsorConfigurationFilePattern;
-            }
-        }
-
-        /// <summary>
-        /// Gets the path to the assemblies that we will search for installers
-        /// </summary>
-        internal static string AssemblyDirectory
-        {
-            get
-            {
-                return Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            }
-        }
-
-        /// <summary>
-        /// AssemblyFilterMask - Only assemblies matching this filter will be checked for Castle Windsor installers
-        /// </summary>
-        internal static string AssemblyFilterMask
-        {
-            get
-            {
-                return InstallerAssemblyFilterMask;
-            }
-        }
-
-        /// <summary>
-        /// Path to write the castle windsor configuration dump
-        /// </summary>
-        internal static string DumpFilePath 
-        {
-            get
-            {
-                return Path.Combine(AssemblyDirectory, CastleWindsorDumpFileName);
-            }
-        }
-
-        /// <summary>
-        /// Namespace prefix for assemblies to check for by convention registration
-        /// </summary>
-        internal static List<string> NamespacePrefixes 
-        {
-            get
-            {
-                return ConventionBasedInstallerNamespacePrefixes;
+                ContainerReporter.AddDiagnosticMessage(string.Format("ConventionBasedInstallerNamespacePrefixes[]={0}", n));
             }
         }
     }

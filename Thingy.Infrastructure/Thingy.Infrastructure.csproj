@@ -52,6 +52,7 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="ConfigurationInstallers.cs" />
     <Compile Include="ContainerReporter.cs" />
+    <Compile Include="DerivedInfrastructureConfiguration.cs" />
     <Compile Include="DoNotInstallByConventionAttribute.cs" />
     <Compile Include="InfrastructureConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
